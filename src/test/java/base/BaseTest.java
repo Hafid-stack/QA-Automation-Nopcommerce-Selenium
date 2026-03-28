@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import org.testng.annotations.AfterMethod;
@@ -15,7 +16,7 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected String baseUrl="https://demo.nopcommerce.com/";
+    protected String baseUrl="https://sauce-demo.myshopify.com/";
 
     @BeforeClass
     public void setUp() {
@@ -33,6 +34,9 @@ public class BaseTest {
         // Extra stability
         options.addArguments("--disable-notifications");
         options.addArguments("--incognito");
+        options.addArguments("--disable-blink-features=AutomationControlled");
+        options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        options.setExperimentalOption("useAutomationExtension", false);
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();

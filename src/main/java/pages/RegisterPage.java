@@ -6,54 +6,30 @@ import org.openqa.selenium.WebDriver;
 
 public class RegisterPage extends BasePage {
 
-    private By maleButton = By.id("gender-male");
-    private By femaleButton = By.id("gender-female");
-    private By firstName = By.id("FirstName");
-    private By lastName = By.id("LastName");
-    private By emailField = By.id("Email");
-    private By companyNameField = By.id("Company");
-    private By newsletter = By.id("NewsLetterSubscriptions_0__IsActive");
-    private By passwordField = By.id("Password");
-    private By confirmPasswordField = By.id("ConfirmPassword");
-    private By registerButton = By.id("register-button");
-    private By registerHeader = By.cssSelector("div.page-title h1");
+
+    private By firstNameInput = By.cssSelector("input#first_name");
+    private By lastNameInput = By.cssSelector("input#last_name");
+    private By emailFieldInput = By.cssSelector("input#email");
+     private By passwordInput = By.cssSelector("input#password");
+    private By registerButton = By.className("action_bottom");
+    private By registerHeader = By.className("accounts-title");
 
 
     public RegisterPage(WebDriver driver){
         super(driver);
     }
 
-    public void clickSelectedGender(String gender){
-
-        if (gender.equals("Male")){
-            click(maleButton);
-        }else if (gender.equals("Female")){
-            click(femaleButton);
-        }
-    }
-
     public void typeFirstName(String fName){
-        type(firstName,fName);
+        type(firstNameInput,fName);
     }
     public void typeLastName(String lName){
-        type(lastName,lName);
+        type(lastNameInput,lName);
     }
     public void typeEmail(String email){
-        type(emailField,email);
-    }
-    public void typeCompanyName(String companyName){
-        type(companyNameField,companyName);
-
+        type(emailFieldInput,email);
     }
     public void typePassword(String password){
-        type(passwordField,password);
-    }
-    public void typeConfirmPassword(String confirmPassword){
-        type(confirmPasswordField,confirmPassword);
-    }
-    public void clickNewsletter(){
-
-        click(newsletter);
+        type(passwordInput,password);
     }
 
     public void clickRegisterButton(){
