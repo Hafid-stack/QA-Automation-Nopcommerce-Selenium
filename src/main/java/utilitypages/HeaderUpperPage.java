@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 public class HeaderUpperPage extends BasePage {
 
     private By registerButton = By.className("ico-register");
-    private By registerButton2 = By.linkText("Register");
-
 
     private By loginButton = By.className("ico-login");
     private By wishlistButton = By.className("wishlist-label");
@@ -25,9 +23,7 @@ public class HeaderUpperPage extends BasePage {
     }
 
     public void clickRegisterButton() {
-        click(registerButton2);
-        log("Clicking on register button");
-
+        click(registerButton);
 
     }
     public void clickLoginButton() {

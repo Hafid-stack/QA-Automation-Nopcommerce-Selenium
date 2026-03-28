@@ -61,7 +61,7 @@ public class RegisterPage extends BasePage {
     }
 
     public String checkRegisterHeader(){
-        return getValue(registerHeader).getText();
+        return getValue(registerHeader);
     }
 
 }
