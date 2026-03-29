@@ -12,7 +12,7 @@ public class RegisterUserTest extends BaseTest {
     @Test(description = "Registering use 1")
     public void registerUserTest(){
 
-         log("Registering User 1 test");
+         log("Registering User 1 test started");
          HomePage homePage = new HomePage(driver);
          RegisterPage registerPage = new RegisterPage(driver);
 
@@ -20,25 +20,29 @@ public class RegisterUserTest extends BaseTest {
          log("Clicking on register button");
 
          String expectedResults=registerPage.checkRegisterHeader();
-         String actualResults = "Register";
+         String actualResults = "Create Account";
          Assert.assertEquals(expectedResults,actualResults,"Register failed");
 
          log("Register page");
 
-         log("Clicking on Gender Select button");
-         registerPage.typeFirstName("don");
-         log("Type first name");
-         registerPage.typeLastName("hafid");
-         log("Type last name");
-         registerPage.typeEmail("testuser1@gmail.com");
-         log("Type email");
-         log("Type company name");
-         log("Clicking on Newsletter Select button");
+
+         registerPage.typeFirstName("don1");
+         log("Typed first name");
+         registerPage.typeLastName("hafid1");
+         log("Typed last name");
+         registerPage.typeEmail("testuser111@gmail.com");
+         log("Typed email");
          registerPage.typePassword("password123");
-         log("Type password");
-         log("Type confirm password");
+         log("Typed password");
          registerPage.clickRegisterButton();
-         log("Clicking on Register button");
+         log("Clicked on Register button");
+
+         log("Begin assertion");
+        Boolean expectedResults2=homePage.getHomepageBodyClass();
+        Assert.assertTrue(expectedResults2,"Register button click failed");
+
+        log("Test passed");
+
 
 
 

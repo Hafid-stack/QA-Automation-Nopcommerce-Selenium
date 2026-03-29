@@ -22,11 +22,16 @@ public class HomePage extends BasePage {
     }
     public Boolean getHomepageBodyClass(){
         boolean result = false;
-        if(homepageBodyClass.toString().equals("sauce-demo")){
+        if(homepageBodyClass.equals(By.id("sauce-demo"))){
             result = true;
         }else {
             result = false;
         }
+        //System.out.println(homepageBodyClass.toString());
+
         return result;
+    }
+    public void clickLoginBtn(){
+        headerUpperPage.clickLoginButton();
     }
 }

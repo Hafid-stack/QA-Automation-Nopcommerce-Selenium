@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.RegisterPage;
 import utilitypages.HeaderUpperPage;
 
-public class UpperHeaderTest extends BaseTest {
+public class UpperHeaderRegisterBtnTest extends BaseTest {
 
 
     @Test(description = "Testing upper header clicks")

@@ -8,7 +8,7 @@ public class HeaderUpperPage extends BasePage {
 
     private By registerButton = By.id("customer_register_link");
 
-    private By loginButton = By.cssSelector(".header .header-upper .ico-login");
+    private By loginButton = By.cssSelector(".container.upper #customer_login_link");
     private By wishlistButton = By.cssSelector(".header .header-upper .wishlist-label");
     private By wishlistQty = By.cssSelector(".header .header-upper .wishlist-qty");
     private By cartIcon = By.cssSelector(".header .header-upper .ico-cart");
