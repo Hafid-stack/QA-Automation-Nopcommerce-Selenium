@@ -50,7 +50,9 @@ public class BasePage {
     protected void log(String text) {
         System.out.println("[Pages Log]: " +text);
     }
-
+    protected void submit(By locator) {
+        waitForVisibility(locator).submit();
+    }
 
 
 }

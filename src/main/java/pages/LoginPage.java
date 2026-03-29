@@ -9,7 +9,8 @@ public class LoginPage extends BasePage {
     private By pageindicator= By.id("create-account");
     private By emailInput= By.cssSelector("input#customer_email");
     private By passwordInput= By.cssSelector("input#customer_password");
-    private By loginButton= By.cssSelector("input[type='submit']");
+    private By loginButton= By.cssSelector(".action_bottom input[value='Sign In']");
+    private By errorMessage= By.cssSelector(".customer_login #errors li");
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -31,5 +32,24 @@ public class LoginPage extends BasePage {
     }
     public void clickLoginButton(){
         click(loginButton);
+    }
+
+    public String getErrorMessage(){
+        return getValue(errorMessage);
+    }
+    public void submitLoginBtn(){
+
+        submit(loginButton);
+    }
+    public Boolean isSinginBtnClickable(){
+        boolean result=false;
+        if (waitForClickability(loginButton).isEnabled()){
+
+            result=true;
+        }else {
+            result=false;
+        }
+        return result;
+
     }
 }
