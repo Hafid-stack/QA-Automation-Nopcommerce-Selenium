@@ -6,21 +6,24 @@ import org.openqa.selenium.WebDriver;
 
 public class HeaderUpperPage extends BasePage {
 
-    public By getUserName= By.className(".fa.fa-user");
-    public By deleteAccountBtn=By.className("[href='/delete_account']");
+    //Before Log in options
     private By loginSinginButton = By.cssSelector("a[href='/login']");
-    private By wishlistButton = By.cssSelector(".header .header-upper .wishlist-label");
-    private By wishlistQty = By.cssSelector(".header .header-upper .wishlist-qty");
-    private By cartIcon = By.cssSelector(".header .header-upper .ico-cart");
-    private By cartButton = By.cssSelector(".header .header-upper .cart-label");
-    private By cartQty = By.cssSelector(".header .header-upper .cart-qty");
-    private By customerCurrency = By.cssSelector(".header .header-upper .customer-currency");
+
+    //After Login options
+    public By getUserName= By.cssSelector("//i[contains(@class, 'fa-user')]/following-sibling::b");
+    public By deleteAccountBtn=By.className("[href='/delete_account']");
+
+    //Available options at all times
 
 
+
+
+    //==========================
     public HeaderUpperPage(WebDriver driver) {
         super(driver);
     }
 
+    //Before login functions
     public void clickRegisterButton() {
         click(loginSinginButton);
 
@@ -29,14 +32,10 @@ public class HeaderUpperPage extends BasePage {
         click(loginSinginButton);
 
     }
-    public void clickWishlistButton() {
-        click(wishlistButton);
 
-    }
-    public void clickWishlistQty() {
-        click(wishlistQty);
 
-    }
+
+    //After loggin functions
     public String getUserName() {
         return getValue(getUserName);
     }

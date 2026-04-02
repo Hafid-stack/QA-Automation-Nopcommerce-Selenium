@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class AccountCreatedPage extends BasePage {
 
-    private By accountCreatedText= By.cssSelector("(data-qa='account-created']");
-    private By continueBtn=By.cssSelector("button[data-qa='continue-button']");
+    private By accountCreatedText= By.cssSelector("[data-qa='account-created']");
+    private By continueBtn=By.cssSelector("[data-qa='continue-button']");
 
     public AccountCreatedPage(WebDriver driver) {
         super(driver);

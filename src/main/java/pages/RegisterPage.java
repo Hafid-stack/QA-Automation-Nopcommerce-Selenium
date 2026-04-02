@@ -59,9 +59,9 @@ public class RegisterPage extends BasePage {
         type(accountPasswordElement,password);
     }
     public void setDataOfBirth(int year, int month, int day) {
-        selectDropDown(dayOfBirthInput,String.valueOf(day));
-        selectDropDown(monthOfBirthInput,String.valueOf(month));
-        selectDropDown(yearOfBirthInput,String.valueOf(year));
+        selectDropDownByValue(dayOfBirthInput,String.valueOf(day));
+        selectDropDownByValue(monthOfBirthInput,String.valueOf(month));
+        selectDropDownByValue(yearOfBirthInput,String.valueOf(year));
     }
     public void clickNewsLetterBtn() {
         click(newsLetterBtn);
@@ -88,7 +88,7 @@ public class RegisterPage extends BasePage {
         type(infoAddress2,address);
     }
     public void typeAdressCountry(String country){
-        selectDropDown(infoCountry,String.valueOf(country));
+        selectDropDownByValue(infoCountry,country);
     }
     public void typeAdressState(String state){
         type(infoState,state);

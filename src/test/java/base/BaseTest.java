@@ -10,6 +10,8 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
@@ -63,5 +65,9 @@ public class BaseTest {
 
     protected void log(String message) {
         System.out.println("[TEST LOG] " + message);
+    }
+
+    protected int getRandomNumber() {
+       return  ThreadLocalRandom.current().nextInt(1, 10000);
     }
 }

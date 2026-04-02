@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -17,6 +18,7 @@ public class BasePage {
     protected BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait= new WebDriverWait(driver, Duration.ofSeconds(15));
+
 
     }
 
@@ -54,7 +56,13 @@ public class BasePage {
         waitForVisibility(locator).submit();
     }
     protected void selectDropDown(By locator, String option) {
-        WebElement element=waitForVisibility(locator);
+        Select selectOption=new Select(waitForVisibility(locator));
+        selectOption.selectByVisibleText(option);
+
+    }
+    protected void selectDropDownByValue(By locator, String option) {
+        Select selectOption=new Select(waitForVisibility(locator));
+        selectOption.selectByValue(option);
 
     }
 

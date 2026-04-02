@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 
+import java.util.Random;
+
 public class RegisterUserTest extends BaseTest {
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
@@ -39,9 +41,9 @@ public class RegisterUserTest extends BaseTest {
         log("Register page successfully loaded");
 
         //6. Enter name and email address
-        loginPage.typeSingInFirstName("datatest");
+        loginPage.typeSingInFirstName("datatest15");
          log("Typed first name");
-         loginPage.typeSingInEmail("datatest55@gmail.com");
+         loginPage.typeSingInEmail("datatest"+ getRandomNumber() +"@gmail.com");
          log("Typed email");
 
         //7. Click 'Signup' button
@@ -60,7 +62,7 @@ public class RegisterUserTest extends BaseTest {
         log("Typed name");
         registerPage.typeAccountPassword("dataTestPassword");
         log("Typed password");
-        registerPage.setDataOfBirth(12,8,1999);
+        registerPage.setDataOfBirth(2000,8,12);
         log("Date of Birth set");
 
         //10. Select checkbox 'Sign up for our newsletter!'
@@ -82,7 +84,7 @@ public class RegisterUserTest extends BaseTest {
         log("Typed adress address one");
         registerPage.typeAdressAddress2("adressDataAddress Second 1234");
         log("Typed adress address second");
-        registerPage.typeAdressCountry("India");
+        registerPage.typeAdressCountry("Canada");
         log("Typed adress country");
         registerPage.typeAdressState("Adress State");
         log("Typed adress state");
@@ -99,7 +101,7 @@ public class RegisterUserTest extends BaseTest {
 
         //14. Verify that 'ACCOUNT CREATED!' is visible
         String actualText=accountCreatedPage.getAccountCreatedText();
-        String expectedText="Account Created!";
+        String expectedText="ACCOUNT CREATED!";
         Assert.assertEquals(actualText, expectedText,"Register page failed");
         log("Account Created Successfully");
 
@@ -109,7 +111,8 @@ public class RegisterUserTest extends BaseTest {
 
         //16. Verify that 'Logged in as username' is visible
         String actualuserName=homePage.getLoggedInAsUserName();
-        String expecteduserName="testtt";
+        System.out.println(actualuserName);
+        String expecteduserName="datatest15";
         Assert.assertEquals(actualuserName, expecteduserName,"Login Page failed");
         log("Logged In Successfully as userName");
 
