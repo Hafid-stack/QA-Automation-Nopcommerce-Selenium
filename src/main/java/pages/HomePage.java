@@ -31,7 +31,15 @@ public class HomePage extends BasePage {
 
         return result;
     }
-    public void clickLoginBtn(){
+    public void clickLoginSinginBtn(){
         headerUpperPage.clickLoginButton();
+    }
+
+    public String getLoggedInAsUserName() {
+        return headerUpperPage.getUserName();
+    }
+
+    public void clickDeleteAccount() {
+        click(headerUpperPage.deleteAccountBtn);
     }
 }

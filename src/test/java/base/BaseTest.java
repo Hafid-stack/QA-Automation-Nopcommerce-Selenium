@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected String baseUrl="https://sauce-demo.myshopify.com/";
+    protected String baseUrl="https://automationexercise.com/";
 
     @BeforeClass
     public void setUp() {
@@ -35,6 +36,7 @@ public class BaseTest {
         options.addArguments("--disable-notifications");
         options.addArguments("--incognito");
         options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("~/Library/Application Support/Google/Chrome/Default/Extensions/gighmmpiobklfepjocnamgkkbiglidom/6.38.1");
         options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
         options.setExperimentalOption("useAutomationExtension", false);
 

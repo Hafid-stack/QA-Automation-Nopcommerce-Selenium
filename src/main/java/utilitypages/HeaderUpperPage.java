@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 
 public class HeaderUpperPage extends BasePage {
 
-    private By registerButton = By.id("customer_register_link");
-
-    private By loginButton = By.cssSelector(".container.upper #customer_login_link");
+    public By getUserName= By.className(".fa.fa-user");
+    public By deleteAccountBtn=By.className("[href='/delete_account']");
+    private By loginSinginButton = By.cssSelector("a[href='/login']");
     private By wishlistButton = By.cssSelector(".header .header-upper .wishlist-label");
     private By wishlistQty = By.cssSelector(".header .header-upper .wishlist-qty");
     private By cartIcon = By.cssSelector(".header .header-upper .ico-cart");
@@ -22,11 +22,11 @@ public class HeaderUpperPage extends BasePage {
     }
 
     public void clickRegisterButton() {
-        click(registerButton);
+        click(loginSinginButton);
 
     }
     public void clickLoginButton() {
-        click(loginButton);
+        click(loginSinginButton);
 
     }
     public void clickWishlistButton() {
@@ -36,5 +36,11 @@ public class HeaderUpperPage extends BasePage {
     public void clickWishlistQty() {
         click(wishlistQty);
 
+    }
+    public String getUserName() {
+        return getValue(getUserName);
+    }
+    public void clickdeleteAccountBtn() {
+        click(deleteAccountBtn);
     }
 }

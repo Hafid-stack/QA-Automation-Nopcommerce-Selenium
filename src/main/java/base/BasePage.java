@@ -53,6 +53,10 @@ public class BasePage {
     protected void submit(By locator) {
         waitForVisibility(locator).submit();
     }
+    protected void selectDropDown(By locator, String option) {
+        WebElement element=waitForVisibility(locator);
+
+    }
 
 
 }
