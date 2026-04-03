@@ -18,6 +18,7 @@ public class LoginPage extends BasePage {
     private By emailFieldInput = By.cssSelector("[data-qa='signup-email']");
     private By firstNameInput = By.cssSelector("[data-qa='signup-name']");
     private By registerButton = By.cssSelector(".signup-form [type='submit']");
+    private By singinErrorMessage=By.cssSelector(".signup-form p");
 
 
 
@@ -58,6 +59,9 @@ public class LoginPage extends BasePage {
     }
     public void typeSingInFirstName(String fName){
         type(firstNameInput,fName);
+    }
+    public String getSinginEmailErrorMessage(){
+        return getValue(singinErrorMessage);
     }
 
 
