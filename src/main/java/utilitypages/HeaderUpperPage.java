@@ -10,8 +10,8 @@ public class HeaderUpperPage extends BasePage {
     private By loginSinginButton = By.cssSelector("a[href='/login']");
 
     //After Login options
-    public By getUserName= By.cssSelector("//i[contains(@class, 'fa-user')]/following-sibling::b");
-    public By deleteAccountBtn=By.className("[href='/delete_account']");
+    public By getUserName = By.cssSelector(".fa-user + b");
+    public By deleteAccountBtn=By.cssSelector("[href='/delete_account']");
 
     //Available options at all times
 

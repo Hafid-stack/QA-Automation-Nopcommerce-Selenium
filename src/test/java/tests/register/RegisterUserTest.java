@@ -111,8 +111,8 @@ public class RegisterUserTest extends BaseTest {
 
         //16. Verify that 'Logged in as username' is visible
         String actualuserName=homePage.getLoggedInAsUserName();
-        System.out.println(actualuserName);
-        String expecteduserName="datatest15";
+        //System.out.println(actualuserName);
+        String expecteduserName="datatestagain";
         Assert.assertEquals(actualuserName, expecteduserName,"Login Page failed");
         log("Logged In Successfully as userName");
 
@@ -121,8 +121,6 @@ public class RegisterUserTest extends BaseTest {
         log("Clicked on Delete button");
 
         //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        deletedAccount.clickDeleteAccount();
-        log("Clicked on Delete button");
         deletedAccount.clickDeleteAccount();
         log("Clicked on Delete button");
         String actualUrl=driver.getCurrentUrl();
