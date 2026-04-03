@@ -121,7 +121,7 @@ public class RegisterUserTest extends BaseTest {
         log("Clicked on Delete button");
 
         //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        deletedAccount.clickDeleteAccount();
+        deletedAccount.clickDeleteAccountContinueBtn();
         log("Clicked on Delete button");
         String actualUrl=driver.getCurrentUrl();
         String expectedUrl="https://automationexercise.com/";

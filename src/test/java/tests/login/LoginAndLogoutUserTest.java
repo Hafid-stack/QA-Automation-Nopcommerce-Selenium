@@ -3,18 +3,19 @@ package tests.login;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.HomePage;
+import pages.LoginPage;
 
-public class LoginUserTest extends BaseTest {
+public class LoginAndLogoutUserTest extends BaseTest {
 
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
-    @Test(description = "Test Case 2: Login User with correct email and password")
+    @Test(description = "Test Case 4: Logout User")
     public void loginUserTest(){
-        log("Login User test started");
+        log("Login and logout User test started");
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        DeletedAccount deletedAccount = new DeletedAccount(driver);
+
         //3. Verify that home page is visible successfully
         //URL check
         String expectedLink ="https://automationexercise.com/";
@@ -52,15 +53,19 @@ public class LoginUserTest extends BaseTest {
         Assert.assertEquals(actualUserName, expectedUserName,"Login page failed");
         log("Home page successfully logged in as intended user, check");
 
-        //9. Click 'Delete Account' button
-        homePage.clickDeleteAccount();
-        log("Clicked Delete account button");
+        //9. Click 'Logout' button
 
-        //10. Verify that 'ACCOUNT DELETED!' is visible
-        String actualDeleteAccountText=deletedAccount.getDeleteAccounText();
-        String expectedDeleteAccountText="ACCOUNT DELETED!";
-        Assert.assertEquals(actualDeleteAccountText, expectedDeleteAccountText,"Delete account failed");
-        log("Deleted account is visible, text check");
+        homePage.clickLogoutBtn();
+        log("Clicked logout button");
+
+        //10. Verify that 'Login/Singin' is visible and login page is open to validate logout
+
+        Assert.assertTrue(homePage.loginSinginBtnPresent(),"Login page failed");
+        log("Logout is successfully, Login button check");
+        String expectedLink2="https://automationexercise.com/login";
+        String actualLink2=driver.getCurrentUrl();
+        Assert.assertEquals(actualLink2, expectedLink2, "Login page failed");
+        log("Logout is successfully, URL check");
 
         log("Test passed");
 

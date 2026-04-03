@@ -11,10 +11,12 @@ public class DeletedAccount extends BasePage {
     public DeletedAccount(WebDriver driver) {
         super(driver);
     }
-    private String getDeleteAccounText() {
+
+    public String getDeleteAccounText() {
       return   getValue(accountDeletedName);
     }
-    public void clickDeleteAccount() {
+
+    public void clickDeleteAccountContinueBtn() {
         click(continueBtn);
     }
 }
