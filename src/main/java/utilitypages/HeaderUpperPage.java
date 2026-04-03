@@ -9,6 +9,11 @@ import javax.swing.plaf.PanelUI;
 public class HeaderUpperPage extends BasePage {
 
     //Before Log in options
+    private By viewCartButton= By.cssSelector("a[href='/view_cart']");
+    private By productsButton= By.cssSelector("a[href='/products']");
+    private By homeButton= By.cssSelector("a[href='/']");
+    private By testCasesButton= By.cssSelector("a[href='/test_cases']");
+    private By tesApisButton= By.cssSelector("a[href='/api_list']");
     private By loginSinginButton = By.cssSelector("a[href='/login']");
     private By contactUsButton = By.cssSelector("a[href='/contact_us']");
     //After Login options
@@ -28,6 +33,9 @@ public class HeaderUpperPage extends BasePage {
 
     //Before login functions
 
+    public void clickTestCasesButton(){
+        click(testCasesButton);
+    }
     public void clickContactUsBtn(){
         click(contactUsButton);
 

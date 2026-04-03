@@ -39,4 +39,7 @@ public class HomePage extends BasePage {
 
         return headerUpperPage.isLoginSinginButtonPresent();
     }
+    public void clickTestCasesButton() {
+        headerUpperPage.clickTestCasesButton();
+    }
 }
