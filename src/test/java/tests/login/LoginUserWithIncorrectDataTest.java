@@ -5,12 +5,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 
-public class LoginUserTest extends BaseTest {
+public class LoginUserWithIncorrectDataTest extends BaseTest {
+
 
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
-    @Test(description = "Test Case 2: Login User with correct email and password")
-    public void loginUserTest(){
+    @Test(description = "Test Case 3: Login User with incorrect email and password")
+    public void loginUserWithIncorrectDataTest() {
         log("Login User test started");
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -36,42 +37,24 @@ public class LoginUserTest extends BaseTest {
         Assert.assertEquals(actualTtile2, expectedTtile2, "Login page failed");
         log("Login page successfully loaded, check");
 
-        //6. Enter correct email address and password
-        loginPage.typeLoginEmail("correctemail12@gmail.com");
+        //6. Enter incorrect email address and password
+        loginPage.typeLoginEmail("incorrect@gmail.com");
         log("Typed email");
-        loginPage.typeLoginPassword("qwertyuiop1234");
+        loginPage.typeLoginPassword("incorrectPassword");
         log("Typed Password");
 
         //7. Click 'login' button
         loginPage.clickLoginButton();
         log("Clicked login button");
 
-        //8. Verify that 'Logged in as username' is visible
-        String actualUserName=homePage.getLoggedInAsUserName();
-        String expectedUserName="correctname";
-        Assert.assertEquals(actualUserName, expectedUserName,"Login page failed");
-        log("Home page successfully logged in as intended user, check");
 
-        //9. Click 'Logout' button
-
-        homePage.clickLogoutBtn();
-        log("Clicked logout button");
-
-        //10. Verify that 'Login/Singin' is visible and login page is open to validate logout
-
-        Assert.assertTrue(homePage.loginSinginBtnPresent(),"Login page failed");
-        log("Logout is successfully, Login button check");
-        String expectedLink2="https://automationexercise.com/login";
-        String actualLink2=driver.getCurrentUrl();
-        Assert.assertEquals(actualLink2, expectedLink2, "Login page failed");
-        log("Logout is successfully, URL check");
+        //8. Verify error 'Your email or password is incorrect!' is visible
+        String actualErrorMessage= loginPage.getLoginErrorMessage();
+        String expectedErrorMessage="Your email or password is incorrect!";
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage,"Login error failed to display");
+        log("Login error message,text check");
 
         log("Test passed");
-
-
-
-
-
 
 
 

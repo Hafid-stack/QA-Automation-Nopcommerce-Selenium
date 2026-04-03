@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
     private By emailLoginInput=By.cssSelector("[data-qa='login-email']");
     private By passwordLoginInput=By.cssSelector("[data-qa='login-password']");
     private By loginButton=By.cssSelector("[data-qa='login-button']");
-
+    private By loginErrorMessage=By.cssSelector(".login-form p");
     //New user Sing Up variables
     private By registerTitle = By.cssSelector(".signup-form h2");
     private By emailFieldInput = By.cssSelector("[data-qa='signup-email']");
@@ -39,6 +39,9 @@ public class LoginPage extends BasePage {
     }
     public void clickLoginButton() {
         click(loginButton);
+    }
+    public String getLoginErrorMessage() {
+        return getValue(loginErrorMessage);
     }
 
 
