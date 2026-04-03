@@ -17,6 +17,9 @@ public class HomePage extends BasePage {
     }
     //functions relay on upper header
 
+    public void clickContactUsButton() {
+        headerUpperPage.clickContactUsBtn();
+    }
     public void clickLoginSinginBtn(){
         headerUpperPage.clickRegisterSinginButton();
     }

@@ -10,7 +10,7 @@ public class HeaderUpperPage extends BasePage {
 
     //Before Log in options
     private By loginSinginButton = By.cssSelector("a[href='/login']");
-
+    private By contactUsButton = By.cssSelector("a[href='/contact_us']");
     //After Login options
     public By getUserName = By.cssSelector(".fa-user + b");
     public By deleteAccountBtn=By.cssSelector("[href='/delete_account']");
@@ -27,6 +27,12 @@ public class HeaderUpperPage extends BasePage {
     }
 
     //Before login functions
+
+    public void clickContactUsBtn(){
+        click(contactUsButton);
+
+    }
+
     public void clickRegisterSinginButton() {
         click(loginSinginButton);
 

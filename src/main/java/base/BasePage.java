@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.Duration;
 
 public class BasePage {
@@ -64,6 +67,15 @@ public class BasePage {
         Select selectOption=new Select(waitForVisibility(locator));
         selectOption.selectByValue(option);
 
+    }
+    public String createSafeTestFile(String fileName) throws IOException {
+        File tempFile = new File("src/test/resources/" + fileName);
+        if (tempFile.createNewFile()) {
+            FileWriter writer = new FileWriter(tempFile);
+            writer.write("This is a safe, automated test file for QA purposes.");
+            writer.close();
+        }
+        return tempFile.getAbsolutePath();
     }
 
 
