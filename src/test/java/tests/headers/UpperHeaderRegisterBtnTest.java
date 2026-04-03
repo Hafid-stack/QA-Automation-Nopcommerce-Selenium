@@ -19,7 +19,6 @@ public class UpperHeaderRegisterBtnTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         log("step 1");
 
-        headerUpperPage.clickRegisterButton();
         log("Clicking on register button");
     }
 }

@@ -15,24 +15,10 @@ public class HomePage extends BasePage {
         super(driver);
         headerUpperPage = new HeaderUpperPage(driver);
     }
+    //functions relay on upper header
 
-    public void clickRegisterBtn(){
-        headerUpperPage.clickRegisterButton();
-
-    }
-    public Boolean getHomepageBodyClass(){
-        boolean result = false;
-        if(homepageBodyClass.equals(By.id("sauce-demo"))){
-            result = true;
-        }else {
-            result = false;
-        }
-        //System.out.println(homepageBodyClass.toString());
-
-        return result;
-    }
     public void clickLoginSinginBtn(){
-        headerUpperPage.clickLoginButton();
+        headerUpperPage.clickRegisterSinginButton();
     }
 
     public String getLoggedInAsUserName() {
@@ -41,5 +27,13 @@ public class HomePage extends BasePage {
 
     public void clickDeleteAccount() {
         click(headerUpperPage.deleteAccountBtn);
+    }
+
+    public void clickLogoutBtn() {
+        headerUpperPage.clickLogoutButton();
+    }
+    public Boolean loginSinginBtnPresent() {
+
+        return headerUpperPage.isLoginSinginButtonPresent();
     }
 }

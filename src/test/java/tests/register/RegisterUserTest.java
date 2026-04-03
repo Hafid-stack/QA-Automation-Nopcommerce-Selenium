@@ -11,7 +11,7 @@ public class RegisterUserTest extends BaseTest {
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
 
-    @Test(description = "Registering use 1")
+    @Test(description = "Test Case 1: Register User")
     public void registerUserTest(){
         log("Registering User 1 test started");
          HomePage homePage = new HomePage(driver);

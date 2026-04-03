@@ -16,6 +16,5 @@ public class RegisterUserWithEmptyInputTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
 
-        homePage.clickRegisterBtn();
         log("Clicking on register button");
     }}

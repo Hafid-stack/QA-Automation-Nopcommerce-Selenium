@@ -8,11 +8,10 @@ public class LoginPage extends BasePage {
 
 
     //Log in variables
-    private By pageindicator= By.id("create-account");
-    private By emailInput= By.cssSelector("input#customer_email");
-    private By passwordInput= By.cssSelector("input#customer_password");
-    private By loginButton= By.cssSelector(".action_bottom input[value='Sign In']");
-    private By errorMessage= By.cssSelector(".customer_login #errors li");
+    private By loginTitle=By.cssSelector(".login-form h2");
+    private By emailLoginInput=By.cssSelector("[data-qa='login-email']");
+    private By passwordLoginInput=By.cssSelector("[data-qa='login-password']");
+    private By loginButton=By.cssSelector("[data-qa='login-button']");
 
     //New user Sing Up variables
     private By registerTitle = By.cssSelector(".signup-form h2");
@@ -22,51 +21,26 @@ public class LoginPage extends BasePage {
 
 
 
-
-
-
-    //Login to your account functions
+    //=====================================
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-//    public boolean loginPageIsOpen(){
-//        boolean fact=false;
-//        if (pageindicator.equals(By.id("create-account"))) {
-//            fact=true;
-//        }else  {
-//            fact=false;
-//        }
-//        return fact;
-//
-//    }
-//    public void typeEmail(String email){
-//        type(emailInput,email);
-//    }
-//    public void typePassword(String password){
-//        type(passwordInput,password);
-//    }
-//    public void clickLoginButton(){
-//        click(loginButton);
-//    }
-//
-//    public String getErrorMessage(){
-//        return getValue(errorMessage);
-//    }
-//    public void submitLoginBtn(){
-//
-//        submit(loginButton);
-//    }
-//    public Boolean isSinginBtnClickable(){
-//        boolean result=false;
-//        if (waitForClickability(loginButton).isEnabled()){
-//
-//            result=true;
-//        }else {
-//            result=false;
-//        }
-//        return result;
-//
-//    }
+
+    //Login to your account functions
+
+    public String getLoginHeader() {
+        return getValue(loginTitle);
+    }
+    public void typeLoginEmail(String email) {
+        type(emailLoginInput, email);
+    }
+    public void typeLoginPassword(String password) {
+        type(passwordLoginInput, password);
+    }
+    public void clickLoginButton() {
+        click(loginButton);
+    }
+
 
 
     //New user Sing Up WebElements functions
@@ -82,5 +56,6 @@ public class LoginPage extends BasePage {
     public void typeSingInFirstName(String fName){
         type(firstNameInput,fName);
     }
+
 
 }
