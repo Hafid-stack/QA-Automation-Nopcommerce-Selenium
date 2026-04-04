@@ -32,7 +32,9 @@ public class HeaderUpperPage extends BasePage {
     }
 
     //Before login functions
-
+    public void ClickProductsButton(){
+        click(productsButton);
+    }
     public void clickTestCasesButton(){
         click(testCasesButton);
     }

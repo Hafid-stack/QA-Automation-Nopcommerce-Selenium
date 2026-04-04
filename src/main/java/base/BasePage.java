@@ -1,9 +1,6 @@
 package base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -76,6 +73,29 @@ public class BasePage {
             writer.close();
         }
         return tempFile.getAbsolutePath();
+    }
+    public void clickImproved(By locator){
+        WebElement element = waitForClickability(locator);
+
+        try {
+            element.click();
+        } catch (Exception e) {
+
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block: 'center'});",
+                    element)
+            ;
+
+            try {
+                element.click();
+            } catch (Exception ex) {
+
+                // Final fallback → JS click
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].click();", element
+                );
+            }
+        }
     }
 
 

@@ -42,4 +42,7 @@ public class HomePage extends BasePage {
     public void clickTestCasesButton() {
         headerUpperPage.clickTestCasesButton();
     }
+    public void clickProductsButton (){
+        headerUpperPage.ClickProductsButton();
+    }
 }
