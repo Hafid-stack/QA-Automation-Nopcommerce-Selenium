@@ -1,6 +1,8 @@
 package base;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,6 +11,7 @@ import java.io.File;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -50,8 +53,7 @@ public class BaseTest {
 
         // Navigate once here
         driver.get(baseUrl);
-
-        log("Browser started and navigated to base URL");
+        closeAdsIfPresent();
     }
 
     @AfterMethod
@@ -69,5 +71,23 @@ public class BaseTest {
 
     protected int getRandomNumber() {
        return  ThreadLocalRandom.current().nextInt(1, 10000);
+    }
+    protected void closeAdsIfPresent(){
+        List<By> ads = List.of(
+                By.cssSelector("iframe[id^='aswift']"),
+                By.cssSelector(".ad-banner")
+        );
+
+        for(By ad : ads){
+            try{
+                driver.switchTo().frame(driver.findElement(ad));
+                WebElement close = driver.findElement(By.cssSelector(".close"));
+                close.click();
+                driver.switchTo().defaultContent();
+                log("Ad closed successfully");
+            } catch(Exception e){
+                driver.switchTo().defaultContent();
+            }
+        }
     }
 }

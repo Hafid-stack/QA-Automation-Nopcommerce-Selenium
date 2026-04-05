@@ -7,6 +7,9 @@ import pages.HomePage;
 import pages.ProductDetailPage;
 import pages.ProductsPage;
 import pages.ViewCartPage;
+import utilitypages.CartItem;
+
+import java.util.List;
 
 public class AddProductInCartTest extends BaseTest {
 
@@ -55,7 +58,13 @@ public class AddProductInCartTest extends BaseTest {
         log("Products in cart checked");
 
         //10. Verify their prices, quantity and total price
+        List<CartItem> items = viewCartPage.getCartItems();
 
+        for (CartItem item : items) {
+            Assert.assertEquals(item.getTotal(), item.getPrice() * item.getQuantity());
+        }
+        log("Products prices, quantity, and total price check");
 
+        log("Test passed");
     }
 }

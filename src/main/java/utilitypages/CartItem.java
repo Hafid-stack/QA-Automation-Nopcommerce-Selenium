@@ -8,7 +8,7 @@ public class CartItem {
 
         // constructor + getters
 
-        public CartItems(int price, int quantity, int total) {
+        public CartItem(int price, int quantity, int total) {
             this.price = price;
             this.quantity = quantity;
             this.total = total;

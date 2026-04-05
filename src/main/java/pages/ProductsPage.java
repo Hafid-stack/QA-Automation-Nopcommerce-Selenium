@@ -1,15 +1,14 @@
 package pages;
 
 import base.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
+import java.time.Duration;
 import java.util.List;
 
 public class ProductsPage extends BasePage {
 
-    private String addToCartSelector = "[data-product-id='%s']";
+    private String addToCartSelector = ".product-overlay [data-product-id='%s']";
     private By productsContainer = By.className("features_items");
     private By productCards = By.cssSelector(".features_items .col-sm-4");
     private By getProductCardsName = By.cssSelector(".features_items .col-sm-4 .productinfo p");
@@ -56,9 +55,32 @@ public class ProductsPage extends BasePage {
         return driver.findElements(getProductCardsName);
     }
     public void clickAddToCartButton(String productId){
-        By dynamicLocator = By.cssSelector(String.format(addToCartSelector, productId));
-        clickImproved(dynamicLocator);
-        log("Clicked 'Add to Cart' for product ID: " + productId);
+//        By dynamicLocator = By.cssSelector(String.format(addToCartSelector, productId));
+//        //System.out.println(dynamicLocator);
+////        By dynamicLocator2 = By.cssSelector(String.format(productsLocatorByNumber, productId));
+////
+////        actions.moveToElement(waitForVisibility(dynamicLocator2),0,-10).
+////                pause(500).perform();
+//////
+////        click(dynamicLocator);
+//        try {
+//            click(dynamicLocator);
+//        } catch (StaleElementReferenceException e) {
+//            WebElement addToCartBtn = driver.findElement(dynamicLocator);
+//            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartBtn);
+//        }
+////        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dynamicLocator);
+//        log("Clicked 'Add to Cart' for product ID: " + productId);
+//        By productCardLocator = By.cssSelector(String.format(productsLocatorByNumber, productId));
+//        WebElement productCard = waitForVisibility(productCardLocator);
+//        actions.moveToElement(productCard)
+//                .pause(Duration.ofMillis(500))
+//                .perform();
+        By addToCartBtnLocator = By.cssSelector(String.format(addToCartSelector, productId));
+//        click(addToCartBtnLocator);
+        WebElement addToCartBtn = driver.findElement(addToCartBtnLocator);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartBtn);
+
     }
     public void clickContinueShoppingButton(){
         clickImproved(productAddedAlertContinueBtn);
