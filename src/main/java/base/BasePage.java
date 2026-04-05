@@ -1,6 +1,7 @@
 package base;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,6 +10,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class BasePage {
 
@@ -79,24 +83,65 @@ public class BasePage {
 
         try {
             element.click();
-        } catch (Exception e) {
-
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].scrollIntoView({block: 'center'});",
-                    element)
-            ;
-
+        } catch (ElementClickInterceptedException e) {
+            scrollToElement(element);
             try {
                 element.click();
-            } catch (Exception ex) {
-
-                // Final fallback → JS click
-                ((JavascriptExecutor) driver).executeScript(
-                        "arguments[0].click();", element
-                );
+            } catch (ElementClickInterceptedException ex) {
+                jsClick(element);
             }
         }
     }
 
+    protected void scrollToElement(WebElement element){
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});", element
+        );
+    }
+
+    protected void jsClick(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
+    public void clickWithRetry(By locator, int attempts){
+        for(int i=0;i<attempts;i++){
+            try{
+                clickImproved(locator);
+                return;
+            } catch(Exception e){
+                log("Click failed, retrying... attempt " + (i+1));
+                try {
+                    sleep(200); // short wait
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        }
+        throw new RuntimeException("Failed to click after " + attempts + " attempts: " + locator);
+    }
+    protected void closeAdsIfPresent(){
+        List<By> ads = List.of(
+                By.cssSelector("iframe[id^='aswift']"),
+                By.cssSelector(".ad-banner")
+        );
+
+        for(By ad : ads){
+            try{
+                driver.switchTo().frame(driver.findElement(ad));
+                WebElement close = driver.findElement(By.cssSelector(".close"));
+                close.click();
+                driver.switchTo().defaultContent();
+                log("Ad closed successfully");
+            } catch(Exception e){
+                driver.switchTo().defaultContent();
+            }
+        }
+    }
+    protected WebElement waitFor(ExpectedCondition<WebElement> condition, int timeoutSeconds){
+        WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+        return customWait.until(condition);
+    }
+    protected WebElement waitForClickabilityImproved(By locator){
+        return waitFor(ExpectedConditions.elementToBeClickable(locator), 15);
+    }
 
 }
