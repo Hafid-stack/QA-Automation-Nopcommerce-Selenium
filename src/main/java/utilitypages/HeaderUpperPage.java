@@ -71,4 +71,8 @@ public class HeaderUpperPage extends BasePage {
         click(logoutBtn);
 
     }
+
+    public void clickCartButtom() {
+        click(viewCartButton);
+    }
 }

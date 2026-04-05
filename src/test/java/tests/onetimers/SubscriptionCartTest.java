@@ -1,24 +1,19 @@
 package tests.onetimers;
 
 import base.BaseTest;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ContactUsPage;
 import pages.HomePage;
 import utilitypages.FooterPage;
 
-import java.awt.*;
-
+public class SubscriptionCartTest extends BaseTest {
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
-public class SubscriptionTest extends BaseTest {
-
-    @Test(description = "Test Case 10: Verify Subscription in home page")
-    public void subscriptionTest(){
-        log("Subscription test started");
+    @Test(description = "Test Case 11: Verify Subscription in Cart page")
+    public void subscriptionCartTest(){
+        log("Subscription in cart test started");
         HomePage homePage = new HomePage(driver);
         FooterPage footerPage = new FooterPage(driver);
         //3. Verify that home page is visible successfully
@@ -32,15 +27,18 @@ public class SubscriptionTest extends BaseTest {
         Assert.assertEquals(expectedTitle, actualTitle,"Home page failed");
         log("Home page successfully loaded, Tile check");
 
-        //4. Scroll down to footer
+        //4. Click 'Cart' button
+        homePage.clickCartButtom();
+        log("Cart button clicked");
+        //5. Scroll down to footer
         WebElement element = driver.findElement(footerPage.subscriptionLocation());
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
-        //5. Verify text 'SUBSCRIPTION'
+        //6. Verify text 'SUBSCRIPTION'
         Assert.assertTrue(footerPage.getFooterSubscriptionText().contains("SUBSCRIPTION"), "Footer subscription failed");
         log("Subscription, text check");
 
-        //6. Enter email address in input and click arrow button
+        //7. Enter email address in input and click arrow button
         footerPage.typeFooterSubscriptionText("testemail@gmail.com");
         log("Test email typed");
         footerPage.clickFooterSubscriptionArrow();
@@ -53,7 +51,6 @@ public class SubscriptionTest extends BaseTest {
 
         log("Test passed");
 
+
     }
-
-
 }

@@ -45,4 +45,8 @@ public class HomePage extends BasePage {
     public void clickProductsButton (){
         headerUpperPage.ClickProductsButton();
     }
+
+    public void clickCartButtom() {
+        headerUpperPage.clickCartButtom();
+    }
 }
