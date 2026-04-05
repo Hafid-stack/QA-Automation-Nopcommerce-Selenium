@@ -40,7 +40,15 @@ public class ProductNavigationTest extends BaseTest {
         Assert.assertEquals(productsPage.getProductsPageTitle(),"ALL PRODUCTS","Products page failed");
         log("Products page successfully loaded, Title check");
 
-        //6. The products list is visible
+        // 6. The products list is visible
+        Assert.assertTrue(productsPage.isProductsListDisplayed(), "Products list container is not visible");
+        int productCount = productsPage.getProductsCount();
+        log("Number of products found: " + productCount);
+
+        Assert.assertTrue(productCount > 0, "The products list is visible but contains no products.");
+        log("Products list is visible and contains items");
+
+
         //7. Click on 'View Product' of first product
         //might need to add some sort of scrool
         productsPage.clickProductByNumber("1");
