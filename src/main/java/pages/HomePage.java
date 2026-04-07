@@ -10,6 +10,7 @@ public class HomePage extends BasePage {
 
     private HeaderUpperPage headerUpperPage;
     private By homepageBodyClass= By.id("sauce-demo");
+    private String homePageViewProductBtn="a[href='/product_details/%s']";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -47,6 +48,11 @@ public class HomePage extends BasePage {
     }
 
     public void clickCartButtom() {
-        headerUpperPage.clickCartButtom();
+        headerUpperPage.    clickCartButtom();
+    }
+    public void clickHomePageViewProductBtn(String productNumber){
+        By actualBtn=By.cssSelector(String.format(homePageViewProductBtn,productNumber));
+        clickImproved(actualBtn);
+
     }
 }

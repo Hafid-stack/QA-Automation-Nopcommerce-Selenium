@@ -12,11 +12,15 @@ import java.util.List;
 public class ViewCartPage extends BasePage {
 
     private By productRows = By.xpath("//tr[starts-with(@id,'product-')]");
-
+    private By productQuantityBtn=By.className("cart_quantity");
     public ViewCartPage(WebDriver driver) {
         super(driver);
     }
 
+    public String getProductQuantity(){
+
+        return getValue(productQuantityBtn);
+    }
     public int getNumberOfProductsInCart() {
         return driver.findElements(productRows).size();
     }
