@@ -13,10 +13,22 @@ public class ViewCartPage extends BasePage {
 
     private By productRows = By.xpath("//tr[starts-with(@id,'product-')]");
     private By productQuantityBtn=By.className("cart_quantity");
+    private By checkoutBtn=By.cssSelector("a.check_out");
+    private By floatingCartLoginSinginBtn=By.cssSelector(".modal-content a[href='/login']");
+    private By floatingCartContinueShoppingBtn=By.cssSelector(".modal-content .modal-footer button");
     public ViewCartPage(WebDriver driver) {
         super(driver);
     }
+    public void clickCheckoutBtn(){
+        click(checkoutBtn);
+    }
+    public void clickFloatingCartLoginSinginBtn(){
+        click(floatingCartLoginSinginBtn);
 
+    }
+    public void clickFloatingCartContinueShoppingBtn(){
+        click(floatingCartContinueShoppingBtn);
+    }
     public String getProductQuantity(){
 
         return getValue(productQuantityBtn);

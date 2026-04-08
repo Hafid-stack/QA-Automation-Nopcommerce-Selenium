@@ -7,7 +7,7 @@ import utilitypages.HeaderUpperPage;
 
 public class HomePage extends BasePage {
 
-
+    
     private HeaderUpperPage headerUpperPage;
     private By homepageBodyClass= By.id("sauce-demo");
     private String homePageViewProductBtn="a[href='/product_details/%s']";
