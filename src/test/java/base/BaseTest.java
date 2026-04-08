@@ -23,7 +23,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl="https://automationexercise.com/";
-
+    protected String homePageTile="Automation Exercise";
     @BeforeClass
     public void setUp() {
 
@@ -67,6 +67,13 @@ public class BaseTest {
 
     protected void log(String message) {
         System.out.println("[TEST LOG] " + message);
+    }
+    protected boolean assertHonePageIsLoaded() {
+        boolean honePageIsLoaded = false;
+        if (driver.getCurrentUrl().equals(baseUrl) && driver.getTitle().equals(homePageTile)) {
+            honePageIsLoaded = true;
+        }
+        return honePageIsLoaded;
     }
 
     protected int getRandomNumber() {

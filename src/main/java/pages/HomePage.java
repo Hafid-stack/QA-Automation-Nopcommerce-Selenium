@@ -48,7 +48,7 @@ public class HomePage extends BasePage {
     }
 
     public void clickCartButtom() {
-        headerUpperPage.    clickCartButtom();
+        headerUpperPage.clickCartButtom();
     }
     public void clickHomePageViewProductBtn(String productNumber){
         By actualBtn=By.cssSelector(String.format(homePageViewProductBtn,productNumber));

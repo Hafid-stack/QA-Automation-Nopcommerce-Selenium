@@ -71,7 +71,7 @@ public class BasePage {
         selectOption.selectByValue(option);
 
     }
-    public String createSafeTestFile(String fileName) throws IOException {
+    protected String createSafeTestFile(String fileName) throws IOException {
         File tempFile = new File("src/test/resources/" + fileName);
         if (tempFile.createNewFile()) {
             FileWriter writer = new FileWriter(tempFile);
@@ -80,7 +80,7 @@ public class BasePage {
         }
         return tempFile.getAbsolutePath();
     }
-    public void clickImproved(By locator){
+    protected void clickImproved(By locator){
         WebElement element = waitForClickability(locator);
 
         try {
@@ -144,6 +144,13 @@ public class BasePage {
     }
     protected WebElement waitForClickabilityImproved(By locator){
         return waitFor(ExpectedConditions.elementToBeClickable(locator), 15);
+    }
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+    protected String getTitleText() {
+        return driver.getTitle();
     }
 
 }
