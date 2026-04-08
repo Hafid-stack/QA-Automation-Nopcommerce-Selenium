@@ -11,6 +11,8 @@ public class RegisterUserFlow extends BaseFlow {
     private LoginPage loginPage;
     private AccountCreatedPage accountCreatedPage;
     private DeletedAccount deletedAccount;
+    private PaymentPage paymentPage;
+    private ViewCartPage viewCartPage;
 
     public RegisterUserFlow(WebDriver driver) {
         super(driver);

@@ -16,4 +16,24 @@ public class PaymentPage extends BasePage {
     protected PaymentPage(WebDriver driver) {
         super(driver);
     }
+
+    public void typeNameOnCard(String cardName){
+        type(nameOnCard,cardName);
+    }
+    public void typeNumberOnCard(String cardNumber){
+        type(numberOnCard,cardNumber);
+    }
+    public void typeCvcCard(String cvcCard3){
+        type(cvcCard,cvcCard3);
+    }
+    public void typeExpiryMonthCard(String monthCard){
+        type(expiryMonthCard,monthCard);
+    }
+    public void typeExpiryYearCard(String yearCard){
+        type(expiryYearCard,yearCard);
+    }
+    public void clickPayButton(){
+        click(payAndConfirmBtn);
+    }
+
 }

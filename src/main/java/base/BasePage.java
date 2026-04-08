@@ -71,7 +71,7 @@ public class BasePage {
         selectOption.selectByValue(option);
 
     }
-    protected String createSafeTestFile(String fileName) throws IOException {
+    public String createSafeTestFile(String fileName) throws IOException {
         File tempFile = new File("src/test/resources/" + fileName);
         if (tempFile.createNewFile()) {
             FileWriter writer = new FileWriter(tempFile);

@@ -92,6 +92,9 @@ public class CheckOutPage extends BasePage {
     public void typeOrderMessage(String message) {
             type(orderMessage,message);
     }
+    public void clickOrderButton() {
+        click(placeOrderBtn);
+    }
 
 
 }
