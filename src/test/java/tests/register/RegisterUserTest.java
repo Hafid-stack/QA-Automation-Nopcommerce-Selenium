@@ -5,8 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 
-import java.util.Random;
-
 public class RegisterUserTest extends BaseTest {
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
@@ -18,7 +16,7 @@ public class RegisterUserTest extends BaseTest {
          LoginPage loginPage = new LoginPage(driver);
          RegisterPage registerPage = new RegisterPage(driver);
          AccountCreatedPage accountCreatedPage=new AccountCreatedPage(driver);
-         DeletedAccount deletedAccount=new DeletedAccount(driver);
+         DeletedAccountPage deletedAccountPage =new DeletedAccountPage(driver);
         //3. Verify that home page is visible successfully
         //URL check
         String expectedLink ="https://automationexercise.com/";
@@ -121,7 +119,7 @@ public class RegisterUserTest extends BaseTest {
         log("Clicked on Delete button");
 
         //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        deletedAccount.clickDeleteAccountContinueBtn();
+        deletedAccountPage.clickDeleteAccountContinueBtn();
         log("Clicked on Delete button");
         String actualUrl=driver.getCurrentUrl();
         String expectedUrl="https://automationexercise.com/";

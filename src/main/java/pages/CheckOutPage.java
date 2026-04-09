@@ -17,7 +17,7 @@ public class CheckOutPage extends BasePage {
     private By deliveryFullName= By.cssSelector("#address_delivery .address_firstname.address_lastname");
     private By adressDeliveryRows=By.cssSelector("#address_delivery");
     private By deliveryAdresses=By.cssSelector(".address_address1.address_address2");
-    protected CheckOutPage(WebDriver driver) {
+    public CheckOutPage(WebDriver driver) {
         super(driver);
     }
     public List<AddressDelivery> getDeliveryAddresses() {

@@ -3,12 +3,8 @@ package flows;
 import base.BaseFlow;
 import org.openqa.selenium.WebDriver;
 import pages.*;
-import utilitypages.AddressDelivery;
 import utilitypages.CartItem;
 import utilitypages.HeaderUpperPage;
-
-import java.sql.Driver;
-import java.util.List;
 
 public class AddProductToCartFlow extends BaseFlow {
 
@@ -21,14 +17,26 @@ public class AddProductToCartFlow extends BaseFlow {
     private CheckOutPage checkOutPage;
     private PaymentDonePage paymentDonePage;
     private HeaderUpperPage headerUpperPage;
-    private DeletedAccount deletedAccount;
+    private DeletedAccountPage deletedAccountPage;
     public AddProductToCartFlow(WebDriver driver) {
         super(driver);
+        this.productsPage = new ProductsPage(driver);
+        this.homePage = new HomePage(driver);
+        this.productsPage = new ProductsPage(driver);
+        this.viewCartPage = new ViewCartPage(driver);
+        this.loginPage = new LoginPage(driver);
+        this.paymentPage=new PaymentPage(driver);
+        this.checkOutPage= new CheckOutPage(driver);
+        this.paymentDonePage = new PaymentDonePage(driver);
+        this.headerUpperPage= new HeaderUpperPage(driver);
+        this.deletedAccountPage =new DeletedAccountPage(driver);
+
     }
-    public ViewCartPage getViewCartPage(String productId, WebDriver driver) {
-        homePage = new HomePage(driver);
-        homePage.clickHomePageViewProductBtn(productId);
-        homePage.clickCartButtom();
+    public ViewCartPage getViewCartPage(String productId) {
+
+        homePage.clickAddToCartBtn("2");
+        homePage.clickAlertViewCartBtn();
+        //return new ViewCartPage(driver);
         return viewCartPage;
     }
     public LoginPage getLoginPage(){
@@ -41,7 +49,7 @@ public class AddProductToCartFlow extends BaseFlow {
     }
 
     public ViewCartPage getViewCartPage2(){
-        homePage.clickProductsButton();
+        homePage.clickCartButtom();
         return  viewCartPage;
     }
 
@@ -66,12 +74,12 @@ public class AddProductToCartFlow extends BaseFlow {
         paymentPage.clickPayButton();
         return paymentDonePage;
     }
-    public DeletedAccount getDeletedAccount(){
+    public DeletedAccountPage getDeletedAccount(){
         headerUpperPage.clickdeleteAccountBtn();
-        return deletedAccount;
+        return deletedAccountPage;
     }
     public HomePage getHomePage(){
-        deletedAccount.clickDeleteAccountContinueBtn();
+        deletedAccountPage.clickDeleteAccountContinueBtn();
         return homePage;
     }
 

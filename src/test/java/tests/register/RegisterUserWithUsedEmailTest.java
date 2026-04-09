@@ -16,7 +16,7 @@ public class RegisterUserWithUsedEmailTest extends BaseTest {
          LoginPage loginPage = new LoginPage(driver);
          RegisterPage registerPage = new RegisterPage(driver);
          AccountCreatedPage accountCreatedPage=new AccountCreatedPage(driver);
-         DeletedAccount deletedAccount=new DeletedAccount(driver);
+         DeletedAccountPage deletedAccountPage =new DeletedAccountPage(driver);
         //3. Verify that home page is visible successfully
         //URL check
         String expectedLink ="https://automationexercise.com/";

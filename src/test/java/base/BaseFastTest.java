@@ -1,6 +1,5 @@
 package base;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -13,7 +12,7 @@ public class BaseFastTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
         AccountCreatedPage accountCreatedPage=new AccountCreatedPage(driver);
-        DeletedAccount deletedAccount=new DeletedAccount(driver);
+        DeletedAccountPage deletedAccountPage =new DeletedAccountPage(driver);
 
 
         homePage.clickLoginSinginBtn();

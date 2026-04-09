@@ -13,7 +13,7 @@ public class PaymentPage extends BasePage {
     private By expiryMonthCard= By.cssSelector("[data-qa='expiry-month']");
     private By expiryYearCard= By.cssSelector("[data-qa='expiry-year']");
     private By payAndConfirmBtn= By.cssSelector("[data-qa='pay-button']");
-    protected PaymentPage(WebDriver driver) {
+    public PaymentPage(WebDriver driver) {
         super(driver);
     }
 

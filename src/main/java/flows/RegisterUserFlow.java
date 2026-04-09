@@ -3,6 +3,7 @@ package flows;
 import base.BaseFlow;
 import org.openqa.selenium.WebDriver;
 import pages.*;
+import utilitypages.HeaderUpperPage;
 
 public class RegisterUserFlow extends BaseFlow {
 
@@ -10,12 +11,19 @@ public class RegisterUserFlow extends BaseFlow {
     private RegisterPage registerPage;
     private LoginPage loginPage;
     private AccountCreatedPage accountCreatedPage;
-    private DeletedAccount deletedAccount;
+    private DeletedAccountPage deletedAccountPage;
     private PaymentPage paymentPage;
     private ViewCartPage viewCartPage;
 
     public RegisterUserFlow(WebDriver driver) {
         super(driver);
+        this.homePage = new HomePage(driver);
+        this.loginPage = new LoginPage(driver);
+        this.deletedAccountPage =new DeletedAccountPage(driver);
+        this.registerPage = new RegisterPage(driver);
+        this.accountCreatedPage = new AccountCreatedPage(driver);
+        this.viewCartPage = new ViewCartPage(driver);
+        this.paymentPage = new PaymentPage(driver);
     }
     public LoginPage getLoginPage() {
         homePage.clickLoginSinginBtn();
@@ -67,10 +75,10 @@ public class RegisterUserFlow extends BaseFlow {
         accountCreatedPage.clickContinueBtn();
         return  homePage;
     }
-    public DeletedAccount getDeletedAccount(){
+    public DeletedAccountPage getDeletedAccount(){
         accountCreatedPage.getAccountCreatedText();
         accountCreatedPage.clickContinueBtn();
-        return deletedAccount;
+        return deletedAccountPage;
 
     }
 

@@ -14,7 +14,7 @@ public class LoginUserTest extends BaseTest {
         log("Login User test started");
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        DeletedAccount deletedAccount = new DeletedAccount(driver);
+        DeletedAccountPage deletedAccountPage = new DeletedAccountPage(driver);
         //3. Verify that home page is visible successfully
         //URL check
         String expectedLink ="https://automationexercise.com/";
@@ -57,7 +57,7 @@ public class LoginUserTest extends BaseTest {
         log("Clicked Delete account button");
 
         //10. Verify that 'ACCOUNT DELETED!' is visible
-        String actualDeleteAccountText=deletedAccount.getDeleteAccounText();
+        String actualDeleteAccountText= deletedAccountPage.getDeleteAccounText();
         String expectedDeleteAccountText="ACCOUNT DELETED!";
         Assert.assertEquals(actualDeleteAccountText, expectedDeleteAccountText,"Delete account failed");
         log("Deleted account is visible, text check");
