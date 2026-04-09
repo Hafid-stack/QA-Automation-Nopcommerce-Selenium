@@ -75,7 +75,7 @@ public class RegisterUserFlow extends BaseFlow {
         return  homePage;
     }
     public DeletedAccountPage getDeletedAccount(){
-        accountCreatedPage.getAccountCreatedText();
+        //accountCreatedPage.getAccountCreatedText();
         accountCreatedPage.clickContinueBtn();
         return deletedAccountPage;
 

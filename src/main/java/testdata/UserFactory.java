@@ -26,15 +26,14 @@ public class UserFactory {
         //depricated
         //Timestamp timestamp = faker.date().birthday(18,65);
         //LocalDate dob = timestamp.toLocalDateTime().toLocalDate();
-        userData.gender=faker.number().numberBetween(1,2);
+        userData.gender=faker.number().numberBetween(1,3);
         userData.firstName = faker.name().firstName();
         userData.lastName = faker.name().lastName();
         userData.phoneNumber = faker.phoneNumber().phoneNumber();
         userData.accountName = faker.name().fullName();
         userData.address1 = faker.address().fullAddress();
         userData.address2 = faker.address().streetAddress();
-        userData.city = faker.address().city();
-        userData.state = faker.address().state();
+        userData.state = faker.address().state().replaceAll(" ","-");
         userData.zipCode = faker.address().zipCode();
         userData.password = faker.phoneNumber().cellPhone()+"Password";
         userData.company = faker.company().name();
@@ -42,7 +41,7 @@ public class UserFactory {
         userData.month=faker.number().numberBetween(1,12);
         userData.day=faker.number().numberBetween(1,28);
         userData.year=faker.number().numberBetween(1888,2024);
-
+        userData.city=faker.dungeonsAndDragons().cities().replaceAll(" ","-");
         return userData;
     }
 

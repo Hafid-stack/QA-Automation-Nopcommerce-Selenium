@@ -16,8 +16,6 @@ public class RegisterBeforeCheckoutTest extends BaseTest {
 
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
-//17. Click 'Delete Account' button
-//18. Verify 'ACCOUNT DELETED!' and click 'Continue' button
     @Test(description = "Test Case 15: Place Order: Register before Checkout")
     public void registerBeforeCheckoutTest(){
         log("Register before Checkout test started");
@@ -51,6 +49,7 @@ public class RegisterBeforeCheckoutTest extends BaseTest {
         //11. Click Proceed To Checkout
 
         CheckOutPage checkOutPage=addProductToCartFlow.getCheckOutPagePage();
+
         //12. Verify Address Details and Review Your Order
         Assert.assertTrue(checkOutPage.getDeliveryAddresses().getCity().equals(userData.city),"City name is incorrect");
         Assert.assertTrue(checkOutPage.getDeliveryAddresses().getAddressOne().equals(userData.address1),"Address one is incorrect");
@@ -73,12 +72,19 @@ public class RegisterBeforeCheckoutTest extends BaseTest {
         PaymentDonePage paymentDonePage=addProductToCartFlow.getPaymentDonePage(fakeCardData);
         //15. Click 'Pay and Confirm Order' button
         //16. Verify success message 'Your order has been placed successfully!'
+        Assert.assertTrue(paymentDonePage.getOrderMessage().contains("Congratulations! Your order has been confirmed!"),"Order success message is incorrect");
+
+        //17. Click 'Delete Account' button
+        DeletedAccountPage deletedAccountPage=addProductToCartFlow.getDeletedAccount();
+
+        //18. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+        Assert.assertTrue(deletedAccountPage.getDeleteAccounText().contains("ACCOUNT DELETED!"),"Account deleted text is incorrect");
+        HomePage homePage1 = addProductToCartFlow.getHomePage();
+
+        Assert.assertTrue(assertHonePageIsLoaded(),"Home page is not loaded");
 
 
-
-
-
-
+        log("Test passed");
 
     }
 }
