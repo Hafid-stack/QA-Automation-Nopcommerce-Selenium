@@ -20,7 +20,7 @@ public class CheckOutPage extends BasePage {
     public CheckOutPage(WebDriver driver) {
         super(driver);
     }
-    public List<AddressDelivery> getDeliveryAddresses() {
+    public AddressDelivery getDeliveryAddresses() {
 
         List<WebElement> addressDetails = driver.findElements(adressDeliveryRows);
         List<AddressDelivery> items = new ArrayList<>();
@@ -79,8 +79,8 @@ public class CheckOutPage extends BasePage {
                     phoneNumber
             ));
         }
-
-        return items;
+        AddressDelivery finalAddress = items.get(0);
+        return finalAddress;
     }
     public List<CartItem> getCartItems() {
 

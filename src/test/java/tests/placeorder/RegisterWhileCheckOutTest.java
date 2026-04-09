@@ -3,10 +3,15 @@ package tests.placeorder;
 import base.BaseTest;
 import flows.AddProductToCartFlow;
 import flows.RegisterUserFlow;
+import models.FakeCardData;
+import models.NewUserSingup;
+import models.UserData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 import models.AddressDelivery;
+import testdata.Generator;
+import testdata.UserFactory;
 
 public class RegisterWhileCheckOutTest extends BaseTest {
 
@@ -19,6 +24,10 @@ public class RegisterWhileCheckOutTest extends BaseTest {
         /* Initiate flows */
         AddProductToCartFlow addProductToCartFlow = new AddProductToCartFlow(driver);
         RegisterUserFlow registerUserFlow = new RegisterUserFlow(driver);
+        UserFactory userFactory = new UserFactory();
+        UserData  userData = userFactory.getUserData();
+        Generator generator = new Generator();
+        NewUserSingup newUserSingup = userFactory.getNewUserSingup();
         //Assert we are at home page
         Assert.assertTrue(assertHonePageIsLoaded(),"Home page is not loaded");
         Assert.assertTrue(driver.getTitle().contains("Automation Exercise"),"Place Order is not displayed");
@@ -41,17 +50,12 @@ public class RegisterWhileCheckOutTest extends BaseTest {
         log("SingIn register page is loaded check");
 
         //
-        RegisterPage registerPage=registerUserFlow.getRegisterPage("testName","testEmail"+getRandomNumber()+"@gmail.com");
+        RegisterPage registerPage=registerUserFlow.getRegisterPage(newUserSingup);
         Assert.assertTrue(registerPage.getRegistrationTitle().contains("ENTER ACCOUNT INFORMATION"),"Register page is not displayed");
         log("Enter account info page is loaded check");
 
 
-        AccountCreatedPage accountCreatedPage =registerUserFlow.getAccountCreatedPage(
-                1,"accountname","password123",
-                2002,12,28,
-                "adress adress","adress asress asesds",
-                "company name","adress number one","adress number two",
-                "United States","statename","cityname","200022","12345567889");
+        AccountCreatedPage accountCreatedPage =registerUserFlow.getAccountCreatedPage(userData);
         Assert.assertTrue(accountCreatedPage.getAccountCreatedText().contains("ACCOUNT CREATED!"),"" +
                 "Account is created page did not load");
         log("Account created page is loaded check");
@@ -59,7 +63,7 @@ public class RegisterWhileCheckOutTest extends BaseTest {
 
         HomePage homePage=registerUserFlow.getHomePage();
 
-        Assert.assertTrue(homePage.getLoggedInAsUserName().equals("accountname"),"Logged In as user name is incorrect");
+        Assert.assertTrue(homePage.getLoggedInAsUserName().equals(userData.accountName),"Logged In as user name is incorrect");
         log("Logged In as user page is loaded check");
 
 
@@ -74,25 +78,25 @@ public class RegisterWhileCheckOutTest extends BaseTest {
         log("Checkout page is loaded URL check");
         //Needs to check the delivery adress if it matches the one i inserted
 
-        AddressDelivery addressDelivery=checkOutPage.getDeliveryAddresses().get(0);
+        AddressDelivery addressDelivery=checkOutPage.getDeliveryAddresses();
 
         //System.out.println(addressDelivery);
         //Assert.assertTrue(addressDelivery.getFirstName().equals("adress adress"),"First name is incorrect");
         //Assert.assertTrue(addressDelivery.getLastName().equals("adress asress asesds"),"Last name is incorrect");
-        Assert.assertTrue(addressDelivery.getCity().equals("cityname"),"City name is incorrect");
-        Assert.assertTrue(addressDelivery.getAddressOne().equals("adress number one"),"Address one is incorrect");
-        Assert.assertTrue(addressDelivery.getAddressTwo().equals("adress number two"),"Address two is incorrect");
-        Assert.assertTrue(addressDelivery.getCountry().equals("United States"),"Country name is incorrect");
-        Assert.assertTrue(addressDelivery.getPhoneNumber().equals("12345567889"),"Phone number is incorrect");
-        Assert.assertTrue(addressDelivery.getState().equals("statename"),"State name is incorrect");
-        Assert.assertTrue(addressDelivery.getZipCode().equals("200022"),"Zip code is incorrect");
-        Assert.assertTrue(addressDelivery.getCompanyName().equals("company name"),"Company name is incorrect");
+        Assert.assertTrue(addressDelivery.getCity().equals(userData.city),"City name is incorrect");
+        Assert.assertTrue(addressDelivery.getAddressOne().equals(userData.address1),"Address one is incorrect");
+        Assert.assertTrue(addressDelivery.getAddressTwo().equals(userData.address2),"Address two is incorrect");
+        Assert.assertTrue(addressDelivery.getCountry().equals(userData.country),"Country name is incorrect");
+        Assert.assertTrue(addressDelivery.getPhoneNumber().equals(userData.phoneNumber),"Phone number is incorrect");
+        Assert.assertTrue(addressDelivery.getState().equals(userData.state),"State name is incorrect");
+        Assert.assertTrue(addressDelivery.getZipCode().equals(userData.zipCode),"Zip code is incorrect");
+        Assert.assertTrue(addressDelivery.getCompanyName().equals(userData.company),"Company name is incorrect");
 
         PaymentPage paymentPage= addProductToCartFlow.getPaymentPage("message order order order");
         Assert.assertTrue(paymentPage.getCurrentUrl().contains("https://automationexercise.com/payment"),"Payment page is not loaded URL");
         log("Payment page loaded URL check");
-
-        PaymentDonePage paymentDonePage= addProductToCartFlow.getPaymentDonePage("tester card","12312312312312","123","13/02","2004");
+        FakeCardData fakeCardData=generator.generateFakeCardData();
+        PaymentDonePage paymentDonePage= addProductToCartFlow.getPaymentDonePage(fakeCardData);
         Assert.assertTrue(paymentDonePage.getCurrentUrl().contains("https://automationexercise.com/payment"),"Payment done page is not loaded URL");
         log("Payment done page is loaded URL check");
 

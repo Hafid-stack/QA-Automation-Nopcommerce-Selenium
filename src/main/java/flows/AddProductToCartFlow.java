@@ -1,6 +1,7 @@
 package flows;
 
 import base.BaseFlow;
+import models.FakeCardData;
 import org.openqa.selenium.WebDriver;
 import pages.*;
 import models.CartItem;
@@ -34,7 +35,7 @@ public class AddProductToCartFlow extends BaseFlow {
     }
     public ViewCartPage getViewCartPage(String productId) {
 
-        homePage.clickAddToCartBtn("2");
+        homePage.clickAddToCartBtn(productId);
         homePage.clickAlertViewCartBtn();
         //return new ViewCartPage(driver);
         return viewCartPage;
@@ -65,12 +66,12 @@ public class AddProductToCartFlow extends BaseFlow {
         return paymentPage;
     }
 
-    public PaymentDonePage getPaymentDonePage(String nameOnCard,String numberOnCard, String cvcNumber,String expirationMonth,String expirationYear){
-        paymentPage.typeNameOnCard(nameOnCard);
-        paymentPage.typeNumberOnCard(numberOnCard);
-        paymentPage.typeCvcCard(cvcNumber);
-        paymentPage.typeExpiryMonthCard(expirationMonth);
-        paymentPage.typeExpiryYearCard(expirationYear);
+    public PaymentDonePage getPaymentDonePage(FakeCardData fakeCardData){
+        paymentPage.typeNameOnCard(fakeCardData.getCardFullName());
+        paymentPage.typeNumberOnCard(fakeCardData.getCardNumber());
+        paymentPage.typeCvcCard(fakeCardData.getCvcNumber());
+        paymentPage.typeExpiryMonthCard(fakeCardData.getExpirationMonth());
+        paymentPage.typeExpiryYearCard(fakeCardData.getExpirationYear());
         paymentPage.clickPayButton();
         return paymentDonePage;
     }

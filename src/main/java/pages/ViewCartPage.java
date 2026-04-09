@@ -66,4 +66,7 @@ public class ViewCartPage extends BasePage {
 
         return items;
     }
+    public String pageUrl(){
+        return "https://automationexercise.com/view_cart";
+    }
 }

@@ -1,6 +1,8 @@
 package flows;
 
 import base.BaseFlow;
+import models.NewUserSingup;
+import models.UserData;
 import org.openqa.selenium.WebDriver;
 import pages.*;
 import utilitypages.HeaderUpperPage;
@@ -29,26 +31,23 @@ public class RegisterUserFlow extends BaseFlow {
         homePage.clickLoginSinginBtn();
         return  loginPage;
     }
-    public RegisterPage getRegisterPage(String name, String email){
-        loginPage.typeSingInFirstName(name);
-        loginPage.typeSingInEmail(email);
+    public RegisterPage getRegisterPage(NewUserSingup newUserSingup) {
+        loginPage.typeSingInFirstName(newUserSingup.getName());
+        loginPage.typeSingInEmail(newUserSingup.getEmail());
         loginPage.clickSingInRegisterButton();
         return  registerPage;
     }
     public AccountCreatedPage getAccountCreatedPage
-            (int gender, String accountName, String accountPassword,int accountYear,int  accountMonth,int accountDay,
-             String adressName, String addressLastName, String adressCompany, String adress1, String adress2,
-             String adressCountry, String adressState, String adressCity, String adressZipCode,
-             String adressPhoneNumber){
-        if (gender==1){
+            (UserData userData) {
+        if (userData.gender==1){
             registerPage.titleMr();
 
-        }else if (gender==2){
+        }else if (userData.gender==2){
             registerPage.titleMrs();
         }
-        registerPage.typeAccountName(accountName);
-        registerPage.typeAccountPassword(accountPassword);
-        registerPage.setDataOfBirth(accountYear,accountMonth,accountDay);
+        registerPage.typeAccountName(userData.accountName);
+        registerPage.typeAccountPassword(userData.password);
+        registerPage.setDataOfBirth(userData.year,userData.month,userData.day);
 
         //10. Select checkbox 'Sign up for our newsletter!'
         registerPage.clickNewsLetterBtn();
@@ -57,16 +56,16 @@ public class RegisterUserFlow extends BaseFlow {
         registerPage.clickSpecialOffersBtn();
 
         //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        registerPage.typeAdressFirstName(adressName);
-        registerPage.typeAdressLastName(addressLastName);
-        registerPage.typeAdressCompany(adressCompany);
-        registerPage.typeAdressAddress(adress1);
-        registerPage.typeAdressAddress2(adress2);
-        registerPage.typeAdressCountry(adressCountry);
-        registerPage.typeAdressState(adressState);
-        registerPage.typeAdressCity(adressCity);
-        registerPage.typeAdressZipCode(adressZipCode);
-        registerPage.typeAdressPhoneNumber(adressPhoneNumber);
+        registerPage.typeAdressFirstName(userData.firstName);
+        registerPage.typeAdressLastName(userData.lastName);
+        registerPage.typeAdressCompany(userData.company);
+        registerPage.typeAdressAddress(userData.address1);
+        registerPage.typeAdressAddress2(userData.address2);
+        registerPage.typeAdressCountry(userData.country);
+        registerPage.typeAdressState(userData.state);
+        registerPage.typeAdressCity(userData.city);
+        registerPage.typeAdressZipCode(userData.zipCode);
+        registerPage.typeAdressPhoneNumber(userData.phoneNumber);
         registerPage.clickCreateAccount();
 
         return  accountCreatedPage;

@@ -7,9 +7,9 @@ public class UserData {
     public String accountName;
     public String password;
 
-    public String year;
-    public String month;
-    public String day;
+    public int year;
+    public int month;
+    public int day;
 
     public String firstName;
     public String lastName;
