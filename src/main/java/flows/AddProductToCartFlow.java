@@ -3,7 +3,7 @@ package flows;
 import base.BaseFlow;
 import org.openqa.selenium.WebDriver;
 import pages.*;
-import utilitypages.CartItem;
+import models.CartItem;
 import utilitypages.HeaderUpperPage;
 
 public class AddProductToCartFlow extends BaseFlow {

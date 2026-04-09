@@ -4,8 +4,8 @@ import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utilitypages.AddressDelivery;
-import utilitypages.CartItem;
+import models.AddressDelivery;
+import models.CartItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,42 +22,64 @@ public class CheckOutPage extends BasePage {
     }
     public List<AddressDelivery> getDeliveryAddresses() {
 
-        List<WebElement> adressDetail = driver.findElements(adressDeliveryRows);
+        List<WebElement> addressDetails = driver.findElements(adressDeliveryRows);
         List<AddressDelivery> items = new ArrayList<>();
-        List<WebElement> deliverAdresses = driver.findElements(deliveryAdresses);
-        for (WebElement detail : adressDetail) {
 
-            String fullName = detail.findElement(By.cssSelector(".address_firstname.address_lastname")).getText();
+        for (WebElement detail : addressDetails) {
+
+            // Full name
+            String fullName = detail
+                    .findElement(By.cssSelector(".address_firstname.address_lastname"))
+                    .getText();
+
             String[] nameParts = fullName.split(" ");
             String firstName = nameParts[0];
             String lastName = nameParts[1];
-            for (WebElement adress : deliverAdresses){
-                String firstAdress = adress.getText();
-                String secondAdress = adress.getText();
-                String thirdAdress = adress.getText();
-                deliverAdresses.add(adress);
-            }
 
-            String companyName = deliverAdresses.get(0).getText();
-            String addressOne = deliverAdresses.get(1).getText();
-            String addressTwo = deliverAdresses.get(2).getText();
+            // Address lines (scoped correctly)
+            List<WebElement> deliveryAddresses =
+                    detail.findElements(By.cssSelector(".address_address1.address_address2"));
 
-            String cityStateZipCode = detail.findElement(By.cssSelector(".address_city.address_state_name.address_postcode")).getText();
-            String [] parts = cityStateZipCode.split(" ");
-            String city=parts[0];
-            String state=parts[1];
-            String zipCode=parts[2];
+            String companyName = deliveryAddresses.get(0).getText();
+            String addressOne = deliveryAddresses.get(1).getText();
+            String addressTwo = deliveryAddresses.get(2).getText();
 
-            String country = detail.findElement(By.cssSelector(".address_country_name")).getText();
-            String phoneNumber = detail.findElement(By.cssSelector(".address_phone")).getText();
+            // City, state, zip
+            String cityStateZipCode =
+                    detail.findElement(By.cssSelector(
+                                    ".address_city.address_state_name.address_postcode"))
+                            .getText();
 
+            String[] parts = cityStateZipCode.split(" ");
 
-            items.add(new AddressDelivery(firstName,lastName,companyName,addressOne,addressTwo,city,state,zipCode,country,phoneNumber));
+            String city = parts[0];
+            String state = parts[1];
+            String zipCode = parts[2];
+
+            // Country
+            String country = detail
+                    .findElement(By.cssSelector(".address_country_name"))
+                    .getText();
+
+            // Phone
+            String phoneNumber = detail
+                    .findElement(By.cssSelector(".address_phone"))
+                    .getText();
+
+            items.add(new AddressDelivery(
+                    firstName,
+                    lastName,
+                    companyName,
+                    addressOne,
+                    addressTwo,
+                    city,
+                    state,
+                    zipCode,
+                    country,
+                    phoneNumber
+            ));
         }
 
-        for (int i=0;i<items.size();i++) {
-            System.out.println(items.get(i));
-        }
         return items;
     }
     public List<CartItem> getCartItems() {

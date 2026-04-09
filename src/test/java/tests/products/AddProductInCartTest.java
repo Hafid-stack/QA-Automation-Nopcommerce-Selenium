@@ -4,10 +4,9 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.ProductDetailPage;
 import pages.ProductsPage;
 import pages.ViewCartPage;
-import utilitypages.CartItem;
+import models.CartItem;
 
 import java.util.List;
 

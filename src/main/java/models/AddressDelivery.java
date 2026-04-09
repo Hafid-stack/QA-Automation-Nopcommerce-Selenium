@@ -1,4 +1,4 @@
-package utilitypages;
+package models;
 
 public class AddressDelivery {
     private String firstName;

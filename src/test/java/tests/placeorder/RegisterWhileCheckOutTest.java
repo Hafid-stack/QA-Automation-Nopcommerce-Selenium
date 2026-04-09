@@ -6,9 +6,7 @@ import flows.RegisterUserFlow;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
-import utilitypages.AddressDelivery;
-
-import java.util.ArrayList;
+import models.AddressDelivery;
 
 public class RegisterWhileCheckOutTest extends BaseTest {
 
@@ -74,7 +72,21 @@ public class RegisterWhileCheckOutTest extends BaseTest {
         CheckOutPage checkOutPage= addProductToCartFlow.getCheckOutPagePage();
         Assert.assertTrue(checkOutPage.getCurrentUrl().contains("https://automationexercise.com/checkout"),"Checkout page is not loaded URL");
         log("Checkout page is loaded URL check");
+        //Needs to check the delivery adress if it matches the one i inserted
 
+        AddressDelivery addressDelivery=checkOutPage.getDeliveryAddresses().get(0);
+
+        //System.out.println(addressDelivery);
+        //Assert.assertTrue(addressDelivery.getFirstName().equals("adress adress"),"First name is incorrect");
+        //Assert.assertTrue(addressDelivery.getLastName().equals("adress asress asesds"),"Last name is incorrect");
+        Assert.assertTrue(addressDelivery.getCity().equals("cityname"),"City name is incorrect");
+        Assert.assertTrue(addressDelivery.getAddressOne().equals("adress number one"),"Address one is incorrect");
+        Assert.assertTrue(addressDelivery.getAddressTwo().equals("adress number two"),"Address two is incorrect");
+        Assert.assertTrue(addressDelivery.getCountry().equals("United States"),"Country name is incorrect");
+        Assert.assertTrue(addressDelivery.getPhoneNumber().equals("12345567889"),"Phone number is incorrect");
+        Assert.assertTrue(addressDelivery.getState().equals("statename"),"State name is incorrect");
+        Assert.assertTrue(addressDelivery.getZipCode().equals("200022"),"Zip code is incorrect");
+        Assert.assertTrue(addressDelivery.getCompanyName().equals("company name"),"Company name is incorrect");
 
         PaymentPage paymentPage= addProductToCartFlow.getPaymentPage("message order order order");
         Assert.assertTrue(paymentPage.getCurrentUrl().contains("https://automationexercise.com/payment"),"Payment page is not loaded URL");

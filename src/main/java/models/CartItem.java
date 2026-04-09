@@ -1,4 +1,4 @@
-package utilitypages;
+package models;
 
 public class CartItem {
 
