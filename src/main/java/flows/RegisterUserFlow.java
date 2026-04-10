@@ -37,17 +37,16 @@ public class RegisterUserFlow extends BaseFlow {
         loginPage.clickSingInRegisterButton();
         return  registerPage;
     }
-    public AccountCreatedPage getAccountCreatedPage
-            (UserData userData) {
-        if (userData.gender==1){
+    public AccountCreatedPage getAccountCreatedPage(UserData userData) {
+        if (userData.getGender()==1){
             registerPage.titleMr();
 
-        }else if (userData.gender==2){
+        }else if (userData.getGender()==2){
             registerPage.titleMrs();
         }
-        registerPage.typeAccountName(userData.accountName);
-        registerPage.typeAccountPassword(userData.password);
-        registerPage.setDataOfBirth(userData.year,userData.month,userData.day);
+        registerPage.typeAccountName(userData.getAccountName());
+        registerPage.typeAccountPassword(userData.getPassword());
+        registerPage.setDataOfBirth(userData.getYear(),userData.getMonth(),userData.getDay());
 
         //10. Select checkbox 'Sign up for our newsletter!'
         registerPage.clickNewsLetterBtn();
@@ -56,16 +55,16 @@ public class RegisterUserFlow extends BaseFlow {
         registerPage.clickSpecialOffersBtn();
 
         //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        registerPage.typeAdressFirstName(userData.firstName);
-        registerPage.typeAdressLastName(userData.lastName);
-        registerPage.typeAdressCompany(userData.company);
-        registerPage.typeAdressAddress(userData.address1);
-        registerPage.typeAdressAddress2(userData.address2);
-        registerPage.typeAdressCountry(userData.country);
-        registerPage.typeAdressState(userData.state);
-        registerPage.typeAdressCity(userData.city);
-        registerPage.typeAdressZipCode(userData.zipCode);
-        registerPage.typeAdressPhoneNumber(userData.phoneNumber);
+        registerPage.typeAdressFirstName(userData.getFirstName());
+        registerPage.typeAdressLastName(userData.getLastName());
+        registerPage.typeAdressCompany(userData.getCompany());
+        registerPage.typeAdressAddress(userData.getAddress1());
+        registerPage.typeAdressAddress2(userData.getAddress2());
+        registerPage.typeAdressCountry(userData.getCountry());
+        registerPage.typeAdressState(userData.getState());
+        registerPage.typeAdressCity(userData.getCity());
+        registerPage.typeAdressZipCode(userData.getZipCode());
+        registerPage.typeAdressPhoneNumber(userData.getPhoneNumber());
         registerPage.clickCreateAccount();
 
         return  accountCreatedPage;

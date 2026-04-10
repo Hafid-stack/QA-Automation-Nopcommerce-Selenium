@@ -2,8 +2,8 @@ package models;
 
 public class NewUserSingup {
 
-    String Name;
-    String email;
+    private String Name;
+    private String email;
 
     public String getName() {
         return Name;

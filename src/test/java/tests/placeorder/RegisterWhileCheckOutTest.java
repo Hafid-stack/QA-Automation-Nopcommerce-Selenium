@@ -63,7 +63,7 @@ public class RegisterWhileCheckOutTest extends BaseTest {
 
         HomePage homePage=registerUserFlow.getHomePage();
 
-        Assert.assertTrue(homePage.getLoggedInAsUserName().equals(userData.accountName),"Logged In as user name is incorrect");
+        Assert.assertTrue(homePage.getLoggedInAsUserName().equals(userData.getAccountName()),"Logged In as user name is incorrect");
         log("Logged In as user page is loaded check");
 
 
@@ -83,14 +83,14 @@ public class RegisterWhileCheckOutTest extends BaseTest {
         //System.out.println(addressDelivery);
         //Assert.assertTrue(addressDelivery.getFirstName().equals("adress adress"),"First name is incorrect");
         //Assert.assertTrue(addressDelivery.getLastName().equals("adress asress asesds"),"Last name is incorrect");
-        Assert.assertTrue(addressDelivery.getCity().equals(userData.city),"City name is incorrect");
-        Assert.assertTrue(addressDelivery.getAddressOne().equals(userData.address1),"Address one is incorrect");
-        Assert.assertTrue(addressDelivery.getAddressTwo().equals(userData.address2),"Address two is incorrect");
-        Assert.assertTrue(addressDelivery.getCountry().equals(userData.country),"Country name is incorrect");
-        Assert.assertTrue(addressDelivery.getPhoneNumber().equals(userData.phoneNumber),"Phone number is incorrect");
-        Assert.assertTrue(addressDelivery.getState().equals(userData.state),"State name is incorrect");
-        Assert.assertTrue(addressDelivery.getZipCode().equals(userData.zipCode),"Zip code is incorrect");
-        Assert.assertTrue(addressDelivery.getCompanyName().equals(userData.company),"Company name is incorrect");
+        Assert.assertTrue(addressDelivery.getCity().equals(userData.getCity()),"City name is incorrect");
+        Assert.assertTrue(addressDelivery.getAddressOne().equals(userData.getAddress1()),"Address one is incorrect");
+        Assert.assertTrue(addressDelivery.getAddressTwo().equals(userData.getAddress2()),"Address two is incorrect");
+        Assert.assertTrue(addressDelivery.getCountry().equals(userData.getCountry()),"Country name is incorrect");
+        Assert.assertTrue(addressDelivery.getPhoneNumber().equals(userData.getPhoneNumber()),"Phone number is incorrect");
+        Assert.assertTrue(addressDelivery.getState().equals(userData.getState()),"State name is incorrect");
+        Assert.assertTrue(addressDelivery.getZipCode().equals(userData.getZipCode()),"Zip code is incorrect");
+        Assert.assertTrue(addressDelivery.getCompanyName().equals(userData.getCompany()),"Company name is incorrect");
 
         PaymentPage paymentPage= addProductToCartFlow.getPaymentPage("message order order order");
         Assert.assertTrue(paymentPage.getCurrentUrl().contains("https://automationexercise.com/payment"),"Payment page is not loaded URL");

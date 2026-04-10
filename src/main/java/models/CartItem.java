@@ -2,9 +2,9 @@ package models;
 
 public class CartItem {
 
-        int price;
-        int quantity;
-        int total;
+        private int price;
+        private int quantity;
+        private int total;
 
         // constructor + getters
 

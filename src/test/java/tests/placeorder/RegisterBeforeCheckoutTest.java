@@ -38,7 +38,7 @@ public class RegisterBeforeCheckoutTest extends BaseTest {
         HomePage homePage = registerUserFlow.getHomePage();
 
         //7. Verify ' Logged in as username' at top
-        Assert.assertTrue(homePage.getLoggedInAsUserName().contains(userData.accountName),"Account name is incorrect");
+        Assert.assertTrue(homePage.getLoggedInAsUserName().contains(userData.getAccountName()),"Account name is incorrect");
         //8. Add products to cart
         //9. Click 'Cart' button
 
@@ -51,14 +51,14 @@ public class RegisterBeforeCheckoutTest extends BaseTest {
         CheckOutPage checkOutPage=addProductToCartFlow.getCheckOutPagePage();
 
         //12. Verify Address Details and Review Your Order
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getCity().equals(userData.city),"City name is incorrect");
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getAddressOne().equals(userData.address1),"Address one is incorrect");
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getAddressTwo().equals(userData.address2),"Address two is incorrect");
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getCountry().equals(userData.country),"Country name is incorrect");
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getPhoneNumber().equals(userData.phoneNumber),"Phone number is incorrect");
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getState().equals(userData.state),"State name is incorrect");
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getZipCode().equals(userData.zipCode),"Zip code is incorrect");
-        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getCompanyName().equals(userData.company),"Company name is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getCity().equals(userData.getCity()),"City name is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getAddressOne().equals(userData.getAddress1()),"Address one is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getAddressTwo().equals(userData.getAddress2()),"Address two is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getCountry().equals(userData.getCountry()),"Country name is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getPhoneNumber().equals(userData.getPhoneNumber()),"Phone number is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getState().equals(userData.getState()),"State name is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getZipCode().equals(userData.getZipCode()),"Zip code is incorrect");
+        Assert.assertTrue(checkOutPage.getDeliveryAddresses().getCompanyName().equals(userData.getCompany()),"Company name is incorrect");
 
 
         Assert.assertTrue(checkOutPage.getCartItems().isEmpty(),"CartItems is empty");
