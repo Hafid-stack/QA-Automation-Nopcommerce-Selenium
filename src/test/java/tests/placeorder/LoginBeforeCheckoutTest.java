@@ -22,7 +22,7 @@ public class LoginBeforeCheckoutTest extends BaseTest {
         RegisterUserFlow registerUserFlow = new RegisterUserFlow(driver);
         UserFactory userFactory = new UserFactory();
         UserData userData = userFactory.getUserData();
-        NewUserSingup newUserSingup = new NewUserSingup();
+        NewUserSingup newUserSingup = userFactory.getNewUserSingup();
         Generator generator = new Generator();
         //3. Verify that home page is visible successfully
         Assert.assertTrue(assertHonePageIsLoaded(),"Login failed");
@@ -63,7 +63,7 @@ public class LoginBeforeCheckoutTest extends BaseTest {
 
         //17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
         Assert.assertTrue(deletedAccountPage.getDeleteAccounText().contains("ACCOUNT DELETED!"),"Account deleted text is incorrect");
-        //HomePage homePage1 = addProductToCartFlow.getHomePage();
+        HomePage homePage1 = addProductToCartFlow.getHomePage();
 
         Assert.assertTrue(assertHonePageIsLoaded(),"Home page is not loaded");
 
