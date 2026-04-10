@@ -26,7 +26,7 @@ public class RegisterBeforeCheckoutTest extends BaseTest {
         //3. Verify that home page is visible successfully
         Assert.assertTrue(assertHonePageIsLoaded(),"Home page is not loaded");
         //4. Click 'Signup / Login' button
-        LoginPage loginPage = registerUserFlow.getLoginPage();
+        LoginPage loginPage = registerUserFlow.clickLoginButtonAndGetLoginPage();
         //5. Fill all details in Signup and create account
         NewUserSingup newUserSingup =userFactory.getNewUserSingup();
         RegisterPage registerPage= registerUserFlow.getRegisterPage(newUserSingup);

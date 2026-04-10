@@ -48,7 +48,7 @@ public class AddProductToCartFlow extends BaseFlow {
 
 
     }
-
+    // Double check if the same function is present in the register flow
     public ViewCartPage getViewCartPage2(){
         homePage.clickCartButtom();
         return  viewCartPage;
@@ -83,5 +83,7 @@ public class AddProductToCartFlow extends BaseFlow {
         deletedAccountPage.clickDeleteAccountContinueBtn();
         return homePage;
     }
+
+
 
 }

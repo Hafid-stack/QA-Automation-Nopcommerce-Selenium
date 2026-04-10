@@ -1,6 +1,7 @@
 package testdata;
 
 import models.FakeCardData;
+import models.ValidUserDataToLogin;
 import net.datafaker.Faker;
 
 public class Generator {
@@ -22,4 +23,9 @@ public class Generator {
         );
         return fakeCardData;
     }
+//    public ValidUserDataToLogin generateValidUserData() {
+//
+//        ValidUserDataToLogin validUserDataToLogin =new ValidUserDataToLogin(email,password);
+//
+//    }
 }
