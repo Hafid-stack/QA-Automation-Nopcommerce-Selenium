@@ -11,6 +11,9 @@ import java.util.List;
 
 public class ViewCartPage extends BasePage {
 
+
+    private By cartIsEmptyText=By.cssSelector("[id='empty_cart']");
+    private By deleteItemOfCartBtn=By.className("cart_quantity_delete");
     private By productRows = By.xpath("//tr[starts-with(@id,'product-')]");
     private By productQuantityBtn=By.className("cart_quantity");
     private By checkoutBtn=By.cssSelector("a.check_out");
@@ -32,6 +35,9 @@ public class ViewCartPage extends BasePage {
     public String getProductQuantity(){
 
         return getValue(productQuantityBtn);
+    }
+    public void clickItemInCartDeleteBtn(){
+        click(deleteItemOfCartBtn);
     }
     public int getNumberOfProductsInCart() {
         return driver.findElements(productRows).size();
@@ -68,5 +74,8 @@ public class ViewCartPage extends BasePage {
     }
     public String pageUrl(){
         return "https://automationexercise.com/view_cart";
+    }
+    public String getCartIsEmptyText(){
+        return getValue(cartIsEmptyText);
     }
 }
