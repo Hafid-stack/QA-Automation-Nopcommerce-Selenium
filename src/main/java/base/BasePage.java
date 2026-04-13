@@ -122,7 +122,7 @@ public class BasePage {
     protected void jsClick(WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
-    public void clickWithRetry(By locator, int attempts){
+    protected void clickWithRetry(By locator, int attempts){
         for(int i=0;i<attempts;i++){
             try{
                 clickImproved(locator);
@@ -169,6 +169,9 @@ public class BasePage {
 
     protected String getTitleText() {
         return driver.getTitle();
+    }
+    protected List<WebElement> waitForVisibilityOfElements(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
 }

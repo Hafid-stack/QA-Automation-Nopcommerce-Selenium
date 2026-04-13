@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import models.CartItem;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,11 @@ public class ViewCartPage extends BasePage {
         click(deleteItemOfCartBtn);
     }
     public int getNumberOfProductsInCart() {
-        return driver.findElements(productRows).size();
+        List<WebElement> products =
+                wait.until(ExpectedConditions
+                        .visibilityOfAllElementsLocatedBy(productRows));
+        driver.findElements(productRows).size();
+        return products.size();
     }
 
     public List<CartItem> getCartItems() {

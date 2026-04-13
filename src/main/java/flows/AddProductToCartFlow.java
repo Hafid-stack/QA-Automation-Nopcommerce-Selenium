@@ -6,9 +6,11 @@ import org.openqa.selenium.WebDriver;
 import pages.*;
 import models.CartItem;
 import utilitypages.HeaderUpperPage;
+import utilitypages.LeftSideBarPage;
 
 public class AddProductToCartFlow extends BaseFlow {
-
+    private CategoryProductsPage categoryProductsPage;
+    private LeftSideBarPage leftSideBarPage;
     private HomePage homePage;
     private ProductsPage productsPage;
     private ViewCartPage viewCartPage;
@@ -31,6 +33,8 @@ public class AddProductToCartFlow extends BaseFlow {
         this.paymentDonePage = new PaymentDonePage(driver);
         this.headerUpperPage= new HeaderUpperPage(driver);
         this.deletedAccountPage =new DeletedAccountPage(driver);
+        this.leftSideBarPage = new LeftSideBarPage(driver);
+        this.categoryProductsPage=new CategoryProductsPage(driver);
 
     }
     public ViewCartPage getViewCartPage(String productId) {
@@ -83,6 +87,17 @@ public class AddProductToCartFlow extends BaseFlow {
         deletedAccountPage.clickDeleteAccountContinueBtn();
         return homePage;
     }
+    public CategoryProductsPage getCategoryProductsPage(){
+        leftSideBarPage.clickWomenCategoryBtn();
+        leftSideBarPage.clickWomenTopsCategoryBtn();
+        return categoryProductsPage;
+    }
+    public CategoryProductsPage getCategoryProductsPage2(){
+        leftSideBarPage.clickMenCategoryBtn();
+        leftSideBarPage.clickMenJeansCategoryBtn();
+        return categoryProductsPage;
+    }
+
 
 
 

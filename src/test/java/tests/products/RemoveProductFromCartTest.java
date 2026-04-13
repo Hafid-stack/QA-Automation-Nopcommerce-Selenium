@@ -31,7 +31,7 @@ public class RemoveProductFromCartTest extends BaseTest {
         driver.navigate().refresh();
         //8. Verify that product is removed from the cart
         int itemsIncart2=viewCartPage.getNumberOfProductsInCart();
-        System.out.println(itemsIncart2);
+        //System.out.println(itemsIncart2);
         Assert.assertTrue(  itemsIncart2==0,"Cart has visible product");
 
         Assert.assertTrue(viewCartPage.getCartIsEmptyText().contains("Cart is empty"));
