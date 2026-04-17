@@ -2,6 +2,8 @@ package pages;
 
 import base.BasePage;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import utilitypages.LeftSideBarPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -18,14 +20,32 @@ public class ProductsPage extends BasePage {
     private By productSearchButton=By.cssSelector("button#submit_search");
     private By productAddedAlertContinueBtn=By.cssSelector(".modal-footer [data-dismiss='modal']");
     private By productAddedAlertViewCartBtn=By.cssSelector(".modal-body a[href='/view_cart']");
-
+    private LeftSideBarPage leftSideBarPage;
 
     public ProductsPage(WebDriver driver) {
         super(driver);
+        this.leftSideBarPage = new LeftSideBarPage(driver);
+    }
+    public LeftSideBarPage getLeftSideBarPage(){
+        return leftSideBarPage;
     }
 
-    public String getProductsPageTitle(){
+    public String getTheFixedProductsPageTitle(){
         return getValue(productsPageTitle);
+    }
+    public String getProductsPageTitleAfterClickingBrand(String brandName){
+
+        wait.until(
+                ExpectedConditions.textToBePresentInElementLocated(
+                        productsPageTitle,
+                        brandName
+                )
+        );
+
+        return driver
+                .findElement(productsPageTitle)
+                .getText()
+                .trim();
     }
     public void clickProductByNumber(String productNumber){
         By productLocator= By.cssSelector(String.format(productsLocatorByNumber,productNumber));
@@ -39,7 +59,7 @@ public class ProductsPage extends BasePage {
 
     public int getProductsCount() {
 
-        return waitForVisibility(productsPageTitle).getText().length();
+        return waitForVisibility(productCards).getText().length();
     }
 
     public void clickSearchProduct(){
@@ -89,4 +109,5 @@ public class ProductsPage extends BasePage {
     public void clickViewCartButton() {
         clickImproved(productAddedAlertViewCartBtn);
     }
+
 }

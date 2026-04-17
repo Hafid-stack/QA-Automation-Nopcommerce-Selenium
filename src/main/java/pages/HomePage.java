@@ -70,4 +70,11 @@ public class HomePage extends BasePage {
     public void clickAlertViewCartBtn(){
         click(productAddedAlertViewCartBtn);
     }
+
+    //---------------Functions that return pages--------------------
+    public ProductsPage clickProductsBtnAndGetProductsPage(){
+        clickProductsButton();
+        return   new ProductsPage(driver);
+
+    }
 }

@@ -42,7 +42,7 @@ public class SearchProductTest extends BaseTest {
         Assert.assertTrue(driver.getCurrentUrl().contains(url),"Products page failed");
         log("Products page successfully loaded, URL check");
 
-        Assert.assertEquals(productsPage.getProductsPageTitle(),"ALL PRODUCTS","Products page failed");
+        Assert.assertEquals(productsPage.getTheFixedProductsPageTitle(),"ALL PRODUCTS","Products page failed");
         log("Products page successfully loaded, Title check");
 
         //6. Enter product name in search input and click search button

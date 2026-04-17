@@ -22,11 +22,11 @@ public class ViewProductsByCategoryTest extends BaseTest {
 
         //4. Click on 'Women' category
         //5. Click on any category link under 'Women' category, for example: Dress
-        CategoryProductsPage categoryProductsPage=addProductToCartFlow.getCategoryProductsPage();
+        CategoryProductsPage categoryProductsPage=addProductToCartFlow.clickAWomenProduct();
         //6. Verify that category page is displayed and confirm text 'WOMEN - TOPS PRODUCTS'
         Assert.assertTrue(categoryProductsPage.getCategoryHeaderText().contains("WOMEN - TOPS PRODUCTS"));
         //7. On left sidebar, click on any sub-category link of 'Men' category
-        CategoryProductsPage categoryProductsPage1=addProductToCartFlow.getCategoryProductsPage2();
+        CategoryProductsPage categoryProductsPage1=addProductToCartFlow.pickAManProduct();
         //8. Verify that user is navigated to that category page
 
         Assert.assertTrue(categoryProductsPage1.getCategoryHeaderText().contains("MEN - JEANS PRODUCTS"),"D" +

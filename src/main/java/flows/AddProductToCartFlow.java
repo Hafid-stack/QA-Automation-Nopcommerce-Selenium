@@ -9,6 +9,7 @@ import utilitypages.HeaderUpperPage;
 import utilitypages.LeftSideBarPage;
 
 public class AddProductToCartFlow extends BaseFlow {
+    //private ProductBrandPage productBrandPage;
     private CategoryProductsPage categoryProductsPage;
     private LeftSideBarPage leftSideBarPage;
     private HomePage homePage;
@@ -23,6 +24,7 @@ public class AddProductToCartFlow extends BaseFlow {
     private DeletedAccountPage deletedAccountPage;
     public AddProductToCartFlow(WebDriver driver) {
         super(driver);
+        //this.productBrandPage=new ProductBrandPage(driver);
         this.productsPage = new ProductsPage(driver);
         this.homePage = new HomePage(driver);
         this.productsPage = new ProductsPage(driver);
@@ -87,16 +89,17 @@ public class AddProductToCartFlow extends BaseFlow {
         deletedAccountPage.clickDeleteAccountContinueBtn();
         return homePage;
     }
-    public CategoryProductsPage getCategoryProductsPage(){
+    public CategoryProductsPage clickAWomenProduct(){
         leftSideBarPage.clickWomenCategoryBtn();
         leftSideBarPage.clickWomenTopsCategoryBtn();
         return categoryProductsPage;
     }
-    public CategoryProductsPage getCategoryProductsPage2(){
+    public CategoryProductsPage pickAManProduct(){
         leftSideBarPage.clickMenCategoryBtn();
         leftSideBarPage.clickMenJeansCategoryBtn();
         return categoryProductsPage;
     }
+
 
 
 

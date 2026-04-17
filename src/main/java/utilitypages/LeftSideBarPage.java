@@ -2,14 +2,18 @@ package utilitypages;
 
 import base.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
 public class LeftSideBarPage extends BasePage {
-
-
+//.brands-name li a
+//.brands-name ul li a
+    private By listOfbrands=By.cssSelector(".brands-name ul li a");
+    //---------------------------------
     private By leftSideBarCategoriesAndBramdsHeaderText = By.cssSelector(".left-sidebar h2");
     //Categories
     private By womenCategoryBtn= By.cssSelector("[id='accordian'] [href='#Women']");
@@ -78,4 +82,46 @@ public class LeftSideBarPage extends BasePage {
 
         return headerText.get(1).getText();
     }
+//    public String clickABrandOutOfCollectedList() {
+//
+//        List<WebElement> brands =
+//                wait.until(ExpectedConditions
+//                        .visibilityOfAllElementsLocatedBy(listOfbrands));
+//
+//        int randomNum = rand.nextInt(brands.size());
+//
+//        WebElement selectedBrand = brands.get(randomNum);
+//
+//        String brandName =
+//                selectedBrand.getText()
+//                        .replaceAll("\\(\\d+\\)", "")
+//                        .trim();
+//
+//        wait.until(ExpectedConditions
+//                .elementToBeClickable(selectedBrand));
+//
+//        ((JavascriptExecutor) driver)
+//                .executeScript("arguments[0].click();", selectedBrand);
+//
+//        return brandName;
+//    }
+public String clickRandomBrand() {
+
+    List<WebElement> brands=waitForVisibilityOfElements(listOfbrands);
+    int index = rand.nextInt(brands.size());
+
+    WebElement selectedBrand = brands.get(index);
+
+    String fullText = selectedBrand.getText().trim();
+
+    String brandName =
+            fullText.replaceAll("^\\(\\d+\\)\\s*", "");
+    scrollToElement(brands.get(index));
+    //selectedBrand.click();
+    wait.until(ExpectedConditions.elementToBeClickable(selectedBrand));
+
+    return brandName;
+}
+
+
 }

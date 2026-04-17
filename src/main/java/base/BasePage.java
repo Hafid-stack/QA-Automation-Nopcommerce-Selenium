@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
@@ -20,6 +21,7 @@ public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;
+    protected Random rand = new Random();
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
@@ -30,6 +32,7 @@ public class BasePage {
 
     protected WebElement waitForClickability(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
+        //    wait.until(ExpectedConditions.elementToBeClickable(selectedBrand));
     }
     protected void click(By locator) {
         waitForClickability(locator).click();
