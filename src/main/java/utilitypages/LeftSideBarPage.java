@@ -36,7 +36,7 @@ public class LeftSideBarPage extends BasePage {
         super(driver);
     }
 
-
+    //----------Categories------------------
 
     public void clickWomenCategoryBtn(){
         clickImproved(womenCategoryBtn);
@@ -76,35 +76,15 @@ public class LeftSideBarPage extends BasePage {
         return headerText.get(0).getText();
 
     }
+
     public String getLeftSideBarBrandsHeaderText(){
 
         List<WebElement> headerText=waitForVisibilityOfElements(leftSideBarCategoriesAndBramdsHeaderText);
 
         return headerText.get(1).getText();
     }
-//    public String clickABrandOutOfCollectedList() {
-//
-//        List<WebElement> brands =
-//                wait.until(ExpectedConditions
-//                        .visibilityOfAllElementsLocatedBy(listOfbrands));
-//
-//        int randomNum = rand.nextInt(brands.size());
-//
-//        WebElement selectedBrand = brands.get(randomNum);
-//
-//        String brandName =
-//                selectedBrand.getText()
-//                        .replaceAll("\\(\\d+\\)", "")
-//                        .trim();
-//
-//        wait.until(ExpectedConditions
-//                .elementToBeClickable(selectedBrand));
-//
-//        ((JavascriptExecutor) driver)
-//                .executeScript("arguments[0].click();", selectedBrand);
-//
-//        return brandName;
-//    }
+    //-----------Brands-----------
+
 public String clickRandomBrand() {
 
     List<WebElement> brands=waitForVisibilityOfElements(listOfbrands);
@@ -118,7 +98,7 @@ public String clickRandomBrand() {
             fullText.replaceAll("^\\(\\d+\\)\\s*", "");
     scrollToElement(brands.get(index));
     //selectedBrand.click();
-    wait.until(ExpectedConditions.elementToBeClickable(selectedBrand));
+    wait.until(ExpectedConditions.elementToBeClickable(selectedBrand)).click();
 
     return brandName;
 }

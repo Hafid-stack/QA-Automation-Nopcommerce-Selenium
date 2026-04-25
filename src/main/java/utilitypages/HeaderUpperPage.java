@@ -33,7 +33,7 @@ public class HeaderUpperPage extends BasePage {
 
     //Before login functions
     public void ClickProductsButton(){
-        click(productsButton);
+        clickWithRetry(productsButton,5);
     }
     public void clickTestCasesButton(){
         click(testCasesButton);

@@ -54,7 +54,7 @@ public class BaseTest {
         // Navigate once here
         driver.get(baseUrl);
         closeAdsIfPresent();
-        closeAdsIfPresent();
+
     }
 
     @AfterMethod
