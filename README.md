@@ -1,5 +1,4 @@
-
-# QA Automation Framework — automationexercise (Selenium + Java)
+# QA Automation Framework — NopCommerce (Selenium + Java)
 
 An industry-grade UI and API test automation framework built against the [NopCommerce](https://automationexercise.com) e-commerce demo site. Designed to simulate a realistic onboarding assignment for a junior QA engineer joining a product team.
 
