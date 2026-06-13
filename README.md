@@ -180,4 +180,4 @@ This project was built as a structured learning exercise covering:
 ## Author
 
 **Abdelhafid Idbahamd**
-[LinkedIn](https://www.linkedin.com/in/your-linkedin) • [GitHub](https://github.com/Hafid-stack)
+[LinkedIn](https://www.linkedin.com/in/abdelhafid-idbahamd/) • [GitHub](https://github.com/Hafid-stack)
